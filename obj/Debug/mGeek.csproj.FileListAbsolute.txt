@@ -1,0 +1,14 @@
+C:\Users\artha\source\repos\mGeek\obj\Debug\mGeek.csprojAssemblyReference.cache
+C:\Users\artha\source\repos\mGeek\obj\Debug\mGeek.Form1.resources
+C:\Users\artha\source\repos\mGeek\obj\Debug\mGeek.Properties.Resources.resources
+C:\Users\artha\source\repos\mGeek\obj\Debug\mGeek.csproj.GenerateResource.cache
+C:\Users\artha\source\repos\mGeek\obj\Debug\mGeek.csproj.CoreCompileInputs.cache
+C:\Users\artha\source\repos\mGeek\bin\Debug\mGeek.exe.config
+C:\Users\artha\source\repos\mGeek\bin\Debug\mGeek.exe
+C:\Users\artha\source\repos\mGeek\bin\Debug\mGeek.pdb
+C:\Users\artha\source\repos\mGeek\obj\Debug\mGeek.exe
+C:\Users\artha\source\repos\mGeek\obj\Debug\mGeek.pdb
+C:\Users\artha\source\repos\mGeek\obj\Debug\mGeek.Settings.resources
+C:\Users\artha\source\repos\mGeek\obj\Debug\mGeek.Help.resources
+C:\Users\artha\source\repos\mGeek\obj\Debug\mGeek._7FMsgbox.resources
+C:\Users\artha\source\repos\mGeek\obj\Debug\mGeek.SearchForm.resources
