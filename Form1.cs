@@ -55,7 +55,6 @@ namespace mGeek
             OpenLogToRead(openFileDialog1.FileName);
         }
 
-
         public void OpenLogToRead(string Path)
         {
             if (Path == null) return;
@@ -144,7 +143,6 @@ namespace mGeek
         private void Button4_Click(object sender, EventArgs e)
         {
             
-
         }
 
         private void MGeekToolStripMenuItem_Click(object sender, EventArgs e)
@@ -232,11 +230,10 @@ namespace mGeek
             }
         }
 
-    public static string Get_LogText(RichTextBox Richtx)
+        public void SetLogInfo()
         {
-            return Richtx.Text;
+            VersionTxt.Text = "";
         }
-        
         private void HelpToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Help OpenForm = new Help();
@@ -257,7 +254,12 @@ namespace mGeek
 
         private void LogSearchList_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyData == Keys.Enter) SearchLogsButton.PerformClick();
+            if (e.KeyData == Keys.Enter)
+            {
+                SearchLogsButton.PerformClick();
+                e.Handled = true;
+                e.SuppressKeyPress = true;
+            }
         }
 
 

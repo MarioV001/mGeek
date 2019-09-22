@@ -44,7 +44,7 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(649, 26);
             this.textBox1.TabIndex = 0;
-            this.textBox1.Text = "31 01 02 03";
+            this.textBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextBox1_KeyDown);
             // 
             // richTextBox1
             // 
@@ -55,10 +55,11 @@
             this.richTextBox1.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.richTextBox1.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.richTextBox1.Location = new System.Drawing.Point(-1, 54);
+            this.richTextBox1.MaxLength = 214748;
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.Size = new System.Drawing.Size(769, 255);
             this.richTextBox1.TabIndex = 1;
-            this.richTextBox1.Text = "31 01 02";
+            this.richTextBox1.Text = "";
             // 
             // button1
             // 
@@ -118,7 +119,12 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "SearchForm";
+            this.Opacity = 0.5D;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Search";
+            this.Activated += new System.EventHandler(this.SearchForm_Activated);
+            this.Deactivate += new System.EventHandler(this.SearchForm_Deactivate);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SearchForm_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 

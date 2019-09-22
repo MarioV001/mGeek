@@ -31,7 +31,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            this.mTxtBox = new System.Windows.Forms.RichTextBox();
+            mTxtBox = new System.Windows.Forms.RichTextBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
@@ -39,8 +39,9 @@
             this.toolStripDropDownButton2 = new System.Windows.Forms.ToolStripDropDownButton();
             this.mGeekToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.debugTimeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.searchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ListLogs = new System.Windows.Forms.ListBox();
             this.SearchLogsButton = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
@@ -51,7 +52,7 @@
             this.MonthSelectLogs = new System.Windows.Forms.ComboBox();
             this.contextLogsMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.reloadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.VersionTxt = new System.Windows.Forms.TextBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
@@ -62,7 +63,6 @@
             this.BMWPanel = new System.Windows.Forms.Panel();
             this.MERCPanel = new System.Windows.Forms.Panel();
             this.LRPanel = new System.Windows.Forms.Panel();
-            this.searchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1.SuspendLayout();
             this.contextLogsMenuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -71,23 +71,23 @@
             // 
             // mTxtBox
             // 
-            this.mTxtBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            mTxtBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.mTxtBox.BackColor = System.Drawing.Color.DarkSlateGray;
-            this.mTxtBox.DetectUrls = false;
-            this.mTxtBox.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mTxtBox.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.mTxtBox.Location = new System.Drawing.Point(0, 254);
-            this.mTxtBox.Name = "mTxtBox";
-            this.mTxtBox.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedBoth;
-            this.mTxtBox.ShowSelectionMargin = true;
-            this.mTxtBox.Size = new System.Drawing.Size(1512, 603);
-            this.mTxtBox.TabIndex = 0;
-            this.mTxtBox.Text = "0|";
-            this.mTxtBox.WordWrap = false;
-            this.mTxtBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MTxtBox_KeyDown);
-            this.mTxtBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MTxtBox_MouseDown);
+            mTxtBox.BackColor = System.Drawing.Color.DarkSlateGray;
+            mTxtBox.DetectUrls = false;
+            mTxtBox.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            mTxtBox.ForeColor = System.Drawing.Color.WhiteSmoke;
+            mTxtBox.Location = new System.Drawing.Point(0, 254);
+            mTxtBox.Name = "mTxtBox";
+            mTxtBox.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedBoth;
+            mTxtBox.ShowSelectionMargin = true;
+            mTxtBox.Size = new System.Drawing.Size(1512, 603);
+            mTxtBox.TabIndex = 0;
+            mTxtBox.Text = "0|";
+            mTxtBox.WordWrap = false;
+            mTxtBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MTxtBox_KeyDown);
+            mTxtBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MTxtBox_MouseDown);
             // 
             // openFileDialog1
             // 
@@ -145,29 +145,35 @@
             this.mGeekToolStripMenuItem.Checked = true;
             this.mGeekToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.mGeekToolStripMenuItem.Name = "mGeekToolStripMenuItem";
-            this.mGeekToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.mGeekToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.mGeekToolStripMenuItem.Text = "mGeek Syntax";
             this.mGeekToolStripMenuItem.Click += new System.EventHandler(this.MGeekToolStripMenuItem_Click);
             // 
             // debugTimeToolStripMenuItem
             // 
             this.debugTimeToolStripMenuItem.Name = "debugTimeToolStripMenuItem";
-            this.debugTimeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.debugTimeToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.debugTimeToolStripMenuItem.Text = "Debug Time";
             // 
-            // settingsToolStripMenuItem
+            // searchToolStripMenuItem
             // 
-            this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
-            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.settingsToolStripMenuItem.Text = "Settings";
-            this.settingsToolStripMenuItem.Click += new System.EventHandler(this.SettingsToolStripMenuItem_Click);
+            this.searchToolStripMenuItem.Name = "searchToolStripMenuItem";
+            this.searchToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.searchToolStripMenuItem.Text = "Search";
             // 
             // helpToolStripMenuItem
             // 
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.helpToolStripMenuItem.Text = "Help";
             this.helpToolStripMenuItem.Click += new System.EventHandler(this.HelpToolStripMenuItem_Click);
+            // 
+            // settingsToolStripMenuItem
+            // 
+            this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
+            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.settingsToolStripMenuItem.Text = "Settings";
+            this.settingsToolStripMenuItem.Click += new System.EventHandler(this.SettingsToolStripMenuItem_Click);
             // 
             // ListLogs
             // 
@@ -268,6 +274,7 @@
             "12"});
             this.MonthSelectLogs.Location = new System.Drawing.Point(0, 29);
             this.MonthSelectLogs.Name = "MonthSelectLogs";
+            this.MonthSelectLogs.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.MonthSelectLogs.Size = new System.Drawing.Size(277, 24);
             this.MonthSelectLogs.TabIndex = 21;
             // 
@@ -285,18 +292,18 @@
             this.reloadToolStripMenuItem.Text = "Reload";
             this.reloadToolStripMenuItem.Click += new System.EventHandler(this.ReloadToolStripMenuItem_Click);
             // 
-            // textBox1
+            // VersionTxt
             // 
-            this.textBox1.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.textBox1.Enabled = false;
-            this.textBox1.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(923, 213);
-            this.textBox1.MaxLength = 100;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(145, 25);
-            this.textBox1.TabIndex = 22;
-            this.textBox1.Text = "Version:";
-            this.textBox1.WordWrap = false;
+            this.VersionTxt.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.VersionTxt.Enabled = false;
+            this.VersionTxt.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.VersionTxt.Location = new System.Drawing.Point(923, 213);
+            this.VersionTxt.MaxLength = 100;
+            this.VersionTxt.Name = "VersionTxt";
+            this.VersionTxt.Size = new System.Drawing.Size(145, 25);
+            this.VersionTxt.TabIndex = 22;
+            this.VersionTxt.Text = "Version:";
+            this.VersionTxt.WordWrap = false;
             // 
             // tabControl1
             // 
@@ -424,12 +431,6 @@
             this.LRPanel.TabIndex = 28;
             this.LRPanel.Visible = false;
             // 
-            // searchToolStripMenuItem
-            // 
-            this.searchToolStripMenuItem.Name = "searchToolStripMenuItem";
-            this.searchToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.searchToolStripMenuItem.Text = "Search";
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -444,8 +445,8 @@
             this.Controls.Add(this.SearchLogsButton);
             this.Controls.Add(this.LogSearchTextBox);
             this.Controls.Add(this.tabControl1);
-            this.Controls.Add(this.mTxtBox);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(mTxtBox);
+            this.Controls.Add(this.VersionTxt);
             this.Controls.Add(this.MonthSelectLogs);
             this.Controls.Add(this.BMWButton);
             this.Controls.Add(this.label2);
@@ -487,7 +488,7 @@
         private System.Windows.Forms.ContextMenuStrip contextLogsMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem reloadToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox VersionTxt;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
@@ -497,8 +498,8 @@
         private System.Windows.Forms.Panel BMWPanel;
         private System.Windows.Forms.Panel MERCPanel;
         private System.Windows.Forms.Panel LRPanel;
-        public System.Windows.Forms.RichTextBox mTxtBox;
         private System.Windows.Forms.ToolStripMenuItem searchToolStripMenuItem;
+        public static System.Windows.Forms.RichTextBox mTxtBox;
     }
 }
 

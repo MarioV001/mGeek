@@ -31,15 +31,19 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.EnableMGeek = new System.Windows.Forms.CheckBox();
+            this.AutoLoadLog = new System.Windows.Forms.CheckBox();
             this.button3 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.AutoLoadLog = new System.Windows.Forms.CheckBox();
-            this.EnableMGeek = new System.Windows.Forms.CheckBox();
+            this.trackBar1 = new System.Windows.Forms.TrackBar();
+            this.label2 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -63,6 +67,8 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.label2);
+            this.tabPage1.Controls.Add(this.trackBar1);
             this.tabPage1.Location = new System.Drawing.Point(114, 4);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
@@ -85,6 +91,26 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Log Loader";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // EnableMGeek
+            // 
+            this.EnableMGeek.AutoSize = true;
+            this.EnableMGeek.Location = new System.Drawing.Point(9, 77);
+            this.EnableMGeek.Name = "EnableMGeek";
+            this.EnableMGeek.Size = new System.Drawing.Size(131, 17);
+            this.EnableMGeek.TabIndex = 4;
+            this.EnableMGeek.Text = "Enable mGeek Syntax";
+            this.EnableMGeek.UseVisualStyleBackColor = true;
+            // 
+            // AutoLoadLog
+            // 
+            this.AutoLoadLog.AutoSize = true;
+            this.AutoLoadLog.Location = new System.Drawing.Point(9, 54);
+            this.AutoLoadLog.Name = "AutoLoadLog";
+            this.AutoLoadLog.Size = new System.Drawing.Size(148, 17);
+            this.AutoLoadLog.TabIndex = 3;
+            this.AutoLoadLog.Text = "AutoLoad Logs At Startup";
+            this.AutoLoadLog.UseVisualStyleBackColor = true;
             // 
             // button3
             // 
@@ -135,25 +161,25 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.Button2_Click);
             // 
-            // AutoLoadLog
+            // trackBar1
             // 
-            this.AutoLoadLog.AutoSize = true;
-            this.AutoLoadLog.Location = new System.Drawing.Point(9, 54);
-            this.AutoLoadLog.Name = "AutoLoadLog";
-            this.AutoLoadLog.Size = new System.Drawing.Size(148, 17);
-            this.AutoLoadLog.TabIndex = 3;
-            this.AutoLoadLog.Text = "AutoLoad Logs At Startup";
-            this.AutoLoadLog.UseVisualStyleBackColor = true;
+            this.trackBar1.BackColor = System.Drawing.Color.White;
+            this.trackBar1.Location = new System.Drawing.Point(2, 56);
+            this.trackBar1.Minimum = 1;
+            this.trackBar1.Name = "trackBar1";
+            this.trackBar1.Size = new System.Drawing.Size(251, 45);
+            this.trackBar1.TabIndex = 0;
+            this.trackBar1.Value = 8;
+            this.trackBar1.ValueChanged += new System.EventHandler(this.TrackBar1_ValueChanged);
             // 
-            // EnableMGeek
+            // label2
             // 
-            this.EnableMGeek.AutoSize = true;
-            this.EnableMGeek.Location = new System.Drawing.Point(9, 77);
-            this.EnableMGeek.Name = "EnableMGeek";
-            this.EnableMGeek.Size = new System.Drawing.Size(131, 17);
-            this.EnableMGeek.TabIndex = 4;
-            this.EnableMGeek.Text = "Enable mGeek Syntax";
-            this.EnableMGeek.UseVisualStyleBackColor = true;
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(-3, 40);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(148, 13);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Search Box Transparency: 08";
             // 
             // Settings
             // 
@@ -170,8 +196,11 @@
             this.Text = "Settings";
             this.Load += new System.EventHandler(this.Settings_Load);
             this.tabControl1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -188,5 +217,7 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.CheckBox EnableMGeek;
         private System.Windows.Forms.CheckBox AutoLoadLog;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TrackBar trackBar1;
     }
 }

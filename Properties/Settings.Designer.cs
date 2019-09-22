@@ -58,5 +58,17 @@ namespace mGeek.Properties {
                 this["AutpLoadLogs"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("8")]
+        public int SearchOpacity {
+            get {
+                return ((int)(this["SearchOpacity"]));
+            }
+            set {
+                this["SearchOpacity"] = value;
+            }
+        }
     }
 }

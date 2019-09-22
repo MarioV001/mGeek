@@ -56,13 +56,23 @@ namespace mGeek
         {
             this.Close();
         }
-
-        private void Button1_Click(object sender, EventArgs e)
+        private void Settings_Load(object sender, EventArgs e)//LOAD Settings
+        {
+            textBox1.Text = Properties.Settings.Default.LogsPath;//load Path
+            AutoLoadLog.Checked = Properties.Settings.Default.AutpLoadLogs;
+            EnableMGeek.Checked = Properties.Settings.Default.StartMGekk;
+            //search
+            trackBar1.Value = Properties.Settings.Default.SearchOpacity;
+            label2.Text = "Search Box Transparency: " + trackBar1.Value * 10 + "%";
+        }
+        private void Button1_Click(object sender, EventArgs e)//Save Settings
         {
             //save
             Properties.Settings.Default.AutpLoadLogs = AutoLoadLog.Checked;
             Properties.Settings.Default.StartMGekk = EnableMGeek.Checked;
             Properties.Settings.Default.Save();
+            //search
+            Properties.Settings.Default.SearchOpacity = trackBar1.Value;
             this.Close();
         }
 
@@ -84,11 +94,11 @@ namespace mGeek
             }
         }
 
-        private void Settings_Load(object sender, EventArgs e)
+        
+
+        private void TrackBar1_ValueChanged(object sender, EventArgs e)
         {
-            textBox1.Text = Properties.Settings.Default.LogsPath;//load Path
-            AutoLoadLog.Checked = Properties.Settings.Default.AutpLoadLogs;
-            EnableMGeek.Checked = Properties.Settings.Default.StartMGekk;
+            label2.Text = "Search Box Transparency: " + trackBar1.Value*10 + "%";
         }
     }
 }
