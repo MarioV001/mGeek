@@ -70,5 +70,17 @@ namespace mGeek.Properties {
                 this["SearchOpacity"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool ExtendSearcHover {
+            get {
+                return ((bool)(this["ExtendSearcHover"]));
+            }
+            set {
+                this["ExtendSearcHover"] = value;
+            }
+        }
     }
 }

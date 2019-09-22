@@ -64,6 +64,8 @@ namespace mGeek
             //search
             trackBar1.Value = Properties.Settings.Default.SearchOpacity;
             label2.Text = "Search Box Transparency: " + trackBar1.Value * 10 + "%";
+            //search hover
+            checkBox1.Checked = Properties.Settings.Default.ExtendSearcHover;
         }
         private void Button1_Click(object sender, EventArgs e)//Save Settings
         {
@@ -73,6 +75,9 @@ namespace mGeek
             Properties.Settings.Default.Save();
             //search
             Properties.Settings.Default.SearchOpacity = trackBar1.Value;
+            //search Log Extend
+            Properties.Settings.Default.ExtendSearcHover = checkBox1.Checked;
+            //SAVE & CLOSE
             this.Close();
         }
 

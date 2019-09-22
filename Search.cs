@@ -20,7 +20,7 @@ namespace mGeek
         private void Button1_Click(object sender, EventArgs e)
         {
             richTextBox1.Clear();
-            richTextBox1.AppendText(SearchInLog(textBox1.Text, Form1.mTxtBox.Text, CaseSCheck.Checked));
+            richTextBox1.AppendText(SearchInLog(textBox1.Text, Form1.mTxtBox.Text, CaseSCheck.Checked));//COMPILE ERROR
             richTextBox1.Focus();
         }
         public static string SearchInLog(string SearchStr, string InputString, bool CaseSen = false)
@@ -36,10 +36,21 @@ namespace mGeek
             }
             return Allperse;
         }
+        private void RichTextBox1_SelectionChanged(object sender, EventArgs e)
+        {
+            
+            
+        }
+        void ScrollToLine(int lineNumber,RichTextBox RChTextCTRL)
+        {
+            if (lineNumber > RChTextCTRL.Lines.Count()) return;
 
+            RChTextCTRL.SelectionStart = RChTextCTRL.Find(RChTextCTRL.Lines[lineNumber]);
+            RChTextCTRL.ScrollToCaret();
+        }
         private void TextBox1_KeyDown(object sender, KeyEventArgs e)
         {
-            if(e.KeyData == Keys.Enter)
+            if (e.KeyData == Keys.Enter)
             {
                 button1.PerformClick();
                 e.Handled = true;
@@ -49,7 +60,8 @@ namespace mGeek
 
         private void SearchForm_Deactivate(object sender, EventArgs e)
         {
-            if (IsClosing == false) {
+            if (IsClosing == false)
+            {
                 this.Opacity = Double.Parse("0." + Properties.Settings.Default.SearchOpacity);
                 this.TopMost = true;
             }
@@ -63,6 +75,13 @@ namespace mGeek
         private void SearchForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             IsClosing = true;
+        }
+
+        private void RichTextBox1_MouseUp(object sender, MouseEventArgs e)
+        {
+            int linenumber = richTextBox1.GetLineFromCharIndex(richTextBox1.SelectionStart);
+            string NewNumber = richTextBox1.Lines[linenumber].Substring(0, 5);
+            ScrollToLine(Convert.ToInt32(NewNumber), Form1.mTxtBox);
         }
     }
 }

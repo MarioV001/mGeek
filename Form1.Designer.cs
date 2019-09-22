@@ -32,6 +32,8 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             mTxtBox = new System.Windows.Forms.RichTextBox();
+            this.ListContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.searchToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
@@ -63,10 +65,10 @@
             this.BMWPanel = new System.Windows.Forms.Panel();
             this.MERCPanel = new System.Windows.Forms.Panel();
             this.LRPanel = new System.Windows.Forms.Panel();
+            this.ListContextMenu.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.contextLogsMenuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
-            this.tabPage1.SuspendLayout();
             this.SuspendLayout();
             // 
             // mTxtBox
@@ -75,6 +77,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             mTxtBox.BackColor = System.Drawing.Color.DarkSlateGray;
+            mTxtBox.ContextMenuStrip = this.ListContextMenu;
             mTxtBox.DetectUrls = false;
             mTxtBox.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             mTxtBox.ForeColor = System.Drawing.Color.WhiteSmoke;
@@ -88,6 +91,19 @@
             mTxtBox.WordWrap = false;
             mTxtBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MTxtBox_KeyDown);
             mTxtBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MTxtBox_MouseDown);
+            // 
+            // ListContextMenu
+            // 
+            this.ListContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.searchToolStripMenuItem1});
+            this.ListContextMenu.Name = "ListContextMenu";
+            this.ListContextMenu.Size = new System.Drawing.Size(110, 26);
+            // 
+            // searchToolStripMenuItem1
+            // 
+            this.searchToolStripMenuItem1.Name = "searchToolStripMenuItem1";
+            this.searchToolStripMenuItem1.Size = new System.Drawing.Size(109, 22);
+            this.searchToolStripMenuItem1.Text = "Search";
             // 
             // openFileDialog1
             // 
@@ -182,14 +198,16 @@
             this.ListLogs.ForeColor = System.Drawing.Color.Coral;
             this.ListLogs.FormattingEnabled = true;
             this.ListLogs.ItemHeight = 16;
-            this.ListLogs.Location = new System.Drawing.Point(0, 3);
+            this.ListLogs.Location = new System.Drawing.Point(-1, 102);
             this.ListLogs.Name = "ListLogs";
             this.ListLogs.ScrollAlwaysVisible = true;
-            this.ListLogs.Size = new System.Drawing.Size(268, 148);
+            this.ListLogs.Size = new System.Drawing.Size(278, 148);
             this.ListLogs.TabIndex = 10;
             this.ListLogs.SelectedIndexChanged += new System.EventHandler(this.ListLogs_SelectedIndexChanged);
             this.ListLogs.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.ListLogs_MouseDoubleClick);
             this.ListLogs.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ListLogs_MouseDown);
+            this.ListLogs.MouseLeave += new System.EventHandler(this.ListLogs_MouseLeave);
+            this.ListLogs.MouseHover += new System.EventHandler(this.ListLogs_MouseHover);
             // 
             // SearchLogsButton
             // 
@@ -313,16 +331,15 @@
             this.tabControl1.Location = new System.Drawing.Point(0, 78);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(277, 177);
+            this.tabControl1.Size = new System.Drawing.Size(277, 21);
             this.tabControl1.TabIndex = 23;
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.ListLogs);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(269, 151);
+            this.tabPage1.Size = new System.Drawing.Size(269, 0);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Logs";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -332,7 +349,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(269, 151);
+            this.tabPage2.Size = new System.Drawing.Size(269, 0);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Car Logs";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -342,7 +359,7 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(269, 151);
+            this.tabPage3.Size = new System.Drawing.Size(269, 0);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "CIP Logs";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -437,6 +454,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(1524, 869);
+            this.Controls.Add(this.ListLogs);
             this.Controls.Add(this.LRPanel);
             this.Controls.Add(this.MERCPanel);
             this.Controls.Add(this.BMWPanel);
@@ -454,14 +472,15 @@
             this.Controls.Add(this.button4);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.Text = "mGeek";
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.ListContextMenu.ResumeLayout(false);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.contextLogsMenuStrip1.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -499,6 +518,8 @@
         private System.Windows.Forms.Panel MERCPanel;
         private System.Windows.Forms.Panel LRPanel;
         private System.Windows.Forms.ToolStripMenuItem searchToolStripMenuItem;
+        private System.Windows.Forms.ContextMenuStrip ListContextMenu;
+        private System.Windows.Forms.ToolStripMenuItem searchToolStripMenuItem1;
         public static System.Windows.Forms.RichTextBox mTxtBox;
     }
 }

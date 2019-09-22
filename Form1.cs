@@ -67,7 +67,7 @@ namespace mGeek
             stopwatch.Stop();
             if (mGeekToolStripMenuItem.Checked == true) TimeDebug.Text = "Time To Load With mGeek: " + stopwatch.ElapsedMilliseconds + " ms";
             else TimeDebug.Text = "Time To Load: " + stopwatch.ElapsedMilliseconds + " ms";
-            mTxtBox.Focus();
+            //mTxtBox.Focus();
         }
         public void ReadFile(string FilePath, long length, RichTextBox RchText, bool Syntax = false)
         {
@@ -295,6 +295,8 @@ namespace mGeek
         {
             if (e.Button == System.Windows.Forms.MouseButtons.Right)
             {
+                int PreVsel = mTxtBox.SelectionStart;
+                int PreLeng = mTxtBox.SelectionLength;
                 var word = GetWordUnderCursor(mTxtBox, e);
                 if (string.Equals(word, "7F"))//if we are dealing with 7F respons(get the meaning)
                 {
@@ -313,9 +315,11 @@ namespace mGeek
                         }
                     }
                 }
+                mTxtBox.SelectionStart = PreVsel;
+                mTxtBox.SelectionLength = PreLeng;
             }
         }
-
+       
         private void Button6_Click(object sender, EventArgs e)
         {
             SetWorkingVehicle(0);//BMW
@@ -345,6 +349,16 @@ namespace mGeek
         private void Button2_Click(object sender, EventArgs e)
         {
             SetWorkingVehicle(2);//LR
+        }
+
+        private void ListLogs_MouseHover(object sender, EventArgs e)
+        {
+            if(Properties.Settings.Default.ExtendSearcHover==true) ListLogs.Height = this.Height - 200;
+        }
+
+        private void ListLogs_MouseLeave(object sender, EventArgs e)
+        {
+            if (Properties.Settings.Default.ExtendSearcHover == true) ListLogs.Height = 150;
         }
     }
 }
