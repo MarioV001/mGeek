@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.CaseSCheck = new System.Windows.Forms.CheckBox();
+            this.ListSearchBox = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // textBox1
@@ -45,24 +45,6 @@
             this.textBox1.Size = new System.Drawing.Size(649, 26);
             this.textBox1.TabIndex = 0;
             this.textBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextBox1_KeyDown);
-            // 
-            // richTextBox1
-            // 
-            this.richTextBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.richTextBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(7)))), ((int)(((byte)(7)))));
-            this.richTextBox1.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.richTextBox1.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.richTextBox1.Location = new System.Drawing.Point(-1, 54);
-            this.richTextBox1.MaxLength = 214748;
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(769, 255);
-            this.richTextBox1.TabIndex = 1;
-            this.richTextBox1.Text = "";
-            this.richTextBox1.WordWrap = false;
-            this.richTextBox1.SelectionChanged += new System.EventHandler(this.RichTextBox1_SelectionChanged);
-            this.richTextBox1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.RichTextBox1_MouseUp);
             // 
             // button1
             // 
@@ -108,16 +90,29 @@
             this.CaseSCheck.Text = "Case Sensitive";
             this.CaseSCheck.UseVisualStyleBackColor = true;
             // 
+            // ListSearchBox
+            // 
+            this.ListSearchBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(7)))), ((int)(((byte)(7)))));
+            this.ListSearchBox.Font = new System.Drawing.Font("Courier New", 9.75F);
+            this.ListSearchBox.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.ListSearchBox.FormattingEnabled = true;
+            this.ListSearchBox.ItemHeight = 16;
+            this.ListSearchBox.Location = new System.Drawing.Point(0, 50);
+            this.ListSearchBox.Name = "ListSearchBox";
+            this.ListSearchBox.Size = new System.Drawing.Size(764, 260);
+            this.ListSearchBox.TabIndex = 6;
+            this.ListSearchBox.SelectedIndexChanged += new System.EventHandler(this.ListSearchBox_SelectedIndexChanged);
+            // 
             // SearchForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(766, 308);
+            this.Controls.Add(this.ListSearchBox);
             this.Controls.Add(this.CaseSCheck);
             this.Controls.Add(this.checkBox2);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.textBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
@@ -139,7 +134,7 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.CheckBox checkBox2;
-        public System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.CheckBox CaseSCheck;
+        private System.Windows.Forms.ListBox ListSearchBox;
     }
 }

@@ -302,12 +302,9 @@ namespace mGeek
             if (e.Button == System.Windows.Forms.MouseButtons.Right)
             {
                 string word = GetWordUnderCursor(mTxtBox, e);
-                string wetyhyr = mTxtBox.Lines[GetLineUnderCursor(mTxtBox)];//line propery false
-                MessageBox.Show(wetyhyr);//Line debug
                 if (word == "7F")//if we are dealing with 7F respons(get the meaning)
                 {
                     string LineSv = mTxtBox.Lines[GetLineUnderCursor(mTxtBox)];//line propery false
-                    MessageBox.Show(LineSv);//Line debug
                     string[] WordsList = LineSv.Split(' ');
                     int Index = 0;
                     foreach (string CWord in WordsList)
