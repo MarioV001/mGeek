@@ -82,6 +82,8 @@ namespace mGeek
                     int result = memoryMappedViewStream.ReadByte();
                     if (result == -1) break;
                     char letter = (char)result;
+                    //MessageBox.Show(((byte)letter).ToString() + "  |  " + letter);
+                    if ((byte)letter == 11) continue;//cantch invalid/unwanted chars(only in ASCI format)
                     resultAsString.Append(letter);
                     if (letter == '\n')
                     {
@@ -101,10 +103,15 @@ namespace mGeek
 
             int Wordindex = 0, Startindex = 0;
             string TempWord = "";
-            var MatchStrings = new List<string> { "7F", "start", "UDS", "Preparing", "Coding", "CAFD", "static", "PROGRAMMING", "Error", "Finalising", "Error", "ACK" };
+            var MatchStrings = new List<string> { "7F", "start", "UDS", "Preparing", "Coding", "CAFD", "static", "PROGRAMMING", "Error", "Finalising", "Error", "ACK" , "Failed" , "BlockLength",
+                                                  "opening","Starting","Download","addressRange" ,"MidCheck" , "cfg"};
             foreach (char letter in mTxtBox.Text)
             {
-                if (letter.ToString() == " " || letter == '.' || letter == ':' || letter == '|' || letter == '+' || letter == '(' || letter == '"' || letter == ')' || letter == ',' || letter == '_' || letter == '=' || letter == ';' || letter == '{' || letter == '}' || letter == '\n')//if space
+                byte[] bytes = Encoding.Default.GetBytes(letter.ToString());
+                string UTF8Str = Encoding.UTF8.GetString(bytes);
+
+                if (UTF8Str == " " || UTF8Str == "." || UTF8Str == ":" || UTF8Str == "|" || UTF8Str == "+" || UTF8Str == "(" || UTF8Str.ToCharArray()[0] == '"' || UTF8Str == ")"
+                            || UTF8Str == "," || UTF8Str == "_" || UTF8Str == "=" || UTF8Str == ";" || UTF8Str == "{" || UTF8Str == "}" || UTF8Str == "\n" || UTF8Str == "\n")//if space
                 {
                     bool contains = MatchStrings.Contains(TempWord, StringComparer.OrdinalIgnoreCase);
                     if (contains)//if match found from Match string
@@ -117,14 +124,14 @@ namespace mGeek
                     Wordindex = 0;
                     TempWord = "";
                 }
-                else if (letter == '\r')
+                else if (letter == '\r' || UTF8Str == "")
                 {
                     //do nothing, multiple line
                 }
                 else
                 {
                     Wordindex++;
-                    TempWord = TempWord + letter;
+                    TempWord = TempWord + UTF8Str;
                 }
             }
 
@@ -142,7 +149,7 @@ namespace mGeek
         }
         private void Button4_Click(object sender, EventArgs e)
         {
-            
+            MessageBox.Show(mTxtBox.Lines.Length.ToString());
         }
 
         private void MGeekToolStripMenuItem_Click(object sender, EventArgs e)
@@ -153,7 +160,7 @@ namespace mGeek
 
         private void Button6_MouseLeave(object sender, EventArgs e)
         {
-            if(BMWPanel.Visible==false) BMWButton.BackgroundImage = Properties.Resources.CBMW;
+            if (BMWPanel.Visible == false) BMWButton.BackgroundImage = Properties.Resources.CBMW;
         }
 
         private void Button6_MouseEnter(object sender, EventArgs e)
@@ -244,11 +251,16 @@ namespace mGeek
         {
             ListLogs.Items.Clear();
             DateTime DateNow = DateTime.Now;
-            DirectoryInfo di = new DirectoryInfo(Properties.Settings.Default.LogsPath + DateNow.Month.ToString("00"));
+            DirectoryInfo di = new DirectoryInfo(@Properties.Settings.Default.LogsPath + MonthSelectLogs.Text + @"\");
+            //string[] array2 = Directory.GetFiles(@"\\log01.lan.autologic.com\Logs");
+            //FileInfo myFile = new FileInfo(@Properties.Settings.Default.LogsPath);
             foreach (FileInfo file in FindFiles(di, "*.log"))
             {
                 // process file
-                if (file.ToString().ToLower().Contains(LogSearchTextBox.Text.ToLower()) == true) ListLogs.Items.Add(file.ToString());
+                if (file.ToString().ToLower().Contains(LogSearchTextBox.Text.ToLower()) == true)
+                {
+                    ListLogs.Items.Add(file.ToString());
+                }
             }
         }
 
@@ -267,40 +279,35 @@ namespace mGeek
         {
             if (string.IsNullOrWhiteSpace(control.Text))
                 return null;
-            //get index of nearest character
             var index = control.GetCharIndexFromPosition(e.Location);
-            //check if mouse is above a word (non-whitespace character)
             if (char.IsWhiteSpace(control.Text[index]))
                 return null;
-            //find the start index of the word
-            var start = index;
+            var start = index;//find the start index of the word
             while (start > 0 && !char.IsWhiteSpace(control.Text[start - 1]))
                 start--;
-            //find the end index of the word
-            var end = index;
+            var end = index;//find the end index of the word
             while (end < control.Text.Length - 1 && !char.IsWhiteSpace(control.Text[end + 1]))
                 end++;
-            //get and return the whole word
             control.SelectionStart = start;
             control.SelectionLength = end - start + 1;
             return control.Text.Substring(start, end - start + 1);
         }
         public static int GetLineUnderCursor(RichTextBox control)
         {
-            int index = control.SelectionStart;
-            int line = control.GetLineFromCharIndex(index);
+            int line = control.GetLineFromCharIndex(control.GetFirstCharIndexOfCurrentLine());
             return line;
         }
         private void MTxtBox_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == System.Windows.Forms.MouseButtons.Right)
             {
-                int PreVsel = mTxtBox.SelectionStart;
-                int PreLeng = mTxtBox.SelectionLength;
-                var word = GetWordUnderCursor(mTxtBox, e);
-                if (string.Equals(word, "7F"))//if we are dealing with 7F respons(get the meaning)
+                string word = GetWordUnderCursor(mTxtBox, e);
+                string wetyhyr = mTxtBox.Lines[GetLineUnderCursor(mTxtBox)];//line propery false
+                MessageBox.Show(wetyhyr);//Line debug
+                if (word == "7F")//if we are dealing with 7F respons(get the meaning)
                 {
-                    string LineSv = mTxtBox.Lines[GetLineUnderCursor(mTxtBox)];
+                    string LineSv = mTxtBox.Lines[GetLineUnderCursor(mTxtBox)];//line propery false
+                    MessageBox.Show(LineSv);//Line debug
                     string[] WordsList = LineSv.Split(' ');
                     int Index = 0;
                     foreach (string CWord in WordsList)
@@ -315,22 +322,20 @@ namespace mGeek
                         }
                     }
                 }
-                mTxtBox.SelectionStart = PreVsel;
-                mTxtBox.SelectionLength = PreLeng;
             }
         }
-       
+
         private void Button6_Click(object sender, EventArgs e)
         {
             SetWorkingVehicle(0);//BMW
         }
         public void ClearVHImages()
         {
-            if(BMWPanel.Visible == false) BMWButton.BackgroundImage = Properties.Resources.CBMW;
-            if(MERCPanel.Visible == false) MercButton.BackgroundImage = Properties.Resources.MERC;
-            if(LRPanel.Visible == false) LRButton.BackgroundImage = Properties.Resources.LR;
+            if (BMWPanel.Visible == false) BMWButton.BackgroundImage = Properties.Resources.CBMW;
+            if (MERCPanel.Visible == false) MercButton.BackgroundImage = Properties.Resources.MERC;
+            if (LRPanel.Visible == false) LRButton.BackgroundImage = Properties.Resources.LR;
         }
-            public void SetWorkingVehicle(int index)
+        public void SetWorkingVehicle(int index)
         {
             BMWPanel.Visible = false;
             MERCPanel.Visible = false;
@@ -353,7 +358,7 @@ namespace mGeek
 
         private void ListLogs_MouseHover(object sender, EventArgs e)
         {
-            if(Properties.Settings.Default.ExtendSearcHover==true) ListLogs.Height = this.Height - 200;
+            if (Properties.Settings.Default.ExtendSearcHover == true) ListLogs.Height = this.Height - 200;
         }
 
         private void ListLogs_MouseLeave(object sender, EventArgs e)

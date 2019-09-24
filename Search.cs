@@ -21,7 +21,6 @@ namespace mGeek
         {
             richTextBox1.Clear();
             richTextBox1.AppendText(SearchInLog(textBox1.Text, Form1.mTxtBox.Text, CaseSCheck.Checked));//COMPILE ERROR
-            richTextBox1.Focus();
         }
         public static string SearchInLog(string SearchStr, string InputString, bool CaseSen = false)
         {
@@ -38,10 +37,10 @@ namespace mGeek
         }
         private void RichTextBox1_SelectionChanged(object sender, EventArgs e)
         {
-            
-            
+
+
         }
-        void ScrollToLine(int lineNumber,RichTextBox RChTextCTRL)
+        void ScrollToLine(int lineNumber, RichTextBox RChTextCTRL)
         {
             if (lineNumber > RChTextCTRL.Lines.Count()) return;
 
@@ -56,7 +55,7 @@ namespace mGeek
                 e.Handled = true;
                 e.SuppressKeyPress = true;
             }
-        }
+        }//erorore
 
         private void SearchForm_Deactivate(object sender, EventArgs e)
         {
@@ -80,6 +79,7 @@ namespace mGeek
         private void RichTextBox1_MouseUp(object sender, MouseEventArgs e)
         {
             int linenumber = richTextBox1.GetLineFromCharIndex(richTextBox1.SelectionStart);
+            if (linenumber < 0 || linenumber > richTextBox1.Lines.Length) return;//Dont show if outofrange
             string NewNumber = richTextBox1.Lines[linenumber].Substring(0, 5);
             ScrollToLine(Convert.ToInt32(NewNumber), Form1.mTxtBox);
         }
