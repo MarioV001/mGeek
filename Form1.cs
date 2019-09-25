@@ -301,10 +301,9 @@ namespace mGeek
             if (Theme == 0)//Default
             {
                 this.BackColor = Color.White;
-
                 //Controls
-                ListLogs.BackColor = Color.Transparent;
-                mTxtBox.BackColor = Color.Transparent;
+                ListLogs.BackColor = Color.DarkSlateGray;
+                mTxtBox.BackColor = Color.DarkSlateGray;
             }
             else if (Theme == 1){//Dark Blue
                 this.BackColor = Color.FromArgb(17, 36, 56);

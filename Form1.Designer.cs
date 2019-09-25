@@ -91,6 +91,8 @@
             mTxtBox.TabIndex = 0;
             mTxtBox.Text = "0|";
             mTxtBox.WordWrap = false;
+            mTxtBox.MouseDown += MTxtBox_MouseDown;
+            mTxtBox.KeyDown += mTxtBox_KeyDown;
             // 
             // ListContextMenu
             // 
