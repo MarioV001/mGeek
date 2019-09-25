@@ -162,7 +162,14 @@ namespace mGeek
         }
         private void Button4_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(mTxtBox.Lines.Length.ToString());
+            if (LastLogLoad == "") MessageBox.Show("Open a log first!");
+            //K:\Tools\Log2SDF\
+            if (CurrentBrandBrowse == "bmw") System.Diagnostics.Process.Start(@"K:\Tools\Log2SDF\BMW\CreateSDF.exe", LastLogLoad);
+            if (CurrentBrandBrowse == "merc") System.Diagnostics.Process.Start(@"K:\Tools\Log2SDF\Mercedes\log-to-sdf.exe", LastLogLoad);
+            if (CurrentBrandBrowse == "lr") System.Diagnostics.Process.Start(@"K:\Tools\Log2SDF\JLR\JLRLog2Sdf.exe", LastLogLoad);
+            if (CurrentBrandBrowse == "vag") System.Diagnostics.Process.Start(@"K:\Tools\Log2SDF\JLR\log2sdf.exe", LastLogLoad);
+            if (CurrentBrandBrowse == "vovlo") System.Diagnostics.Process.Start(@"K:\Tools\Log2SDF\JLR\log2sdf.exe", LastLogLoad);
+
         }
 
         private void MGeekToolStripMenuItem_Click(object sender, EventArgs e)
