@@ -28,8 +28,17 @@ namespace mGeek
             List<string> logListContent = new List<string>();
             //I:\bmw\2019\
             DateTime DateNow = DateTime.Now;
-            logListContent = Directory.GetFiles(@Properties.Settings.Default.LogsPath + @"\" + CurrentBrandBrowse + @"\" + DateNow.Year.ToString("0000") + @"\" + MonthSelectLogs.Text + @"\").ToList();
-            logListContent = logListContent.OrderByDescending(x => x).ToList();
+            try
+            {
+                logListContent = Directory.GetFiles(@Properties.Settings.Default.LogsPath + @"\" + CurrentBrandBrowse + @"\" + DateNow.Year.ToString("0000") + @"\" + MonthSelectLogs.Text + @"\").ToList();
+                logListContent = logListContent.OrderByDescending(x => x).ToList();
+            }
+            catch (IOException ioex)
+            {
+                MessageBox.Show(ioex.Message, "Did not find path!");
+                return ;
+            }
+            
             for(int count = 0; count < logListContent.Count(); count++)//clear out the names
                 {
                 string[] words = logListContent[count].Split('\\');
@@ -40,6 +49,7 @@ namespace mGeek
         }
         private void Form1_Load(object sender, EventArgs e)
         {
+            SetAppTheme(Properties.Settings.Default.Theme);
             if (Properties.Settings.Default.LoadLastBrand == true) SetWorkingVehicle(Properties.Settings.Default.LastBrandBrowsing,Properties.Settings.Default.AutpLoadLogs);
              else SetWorkingVehicle(0, Properties.Settings.Default.AutpLoadLogs);
             //load log into RichTxt
@@ -286,7 +296,30 @@ namespace mGeek
                 e.SuppressKeyPress = true;
             }
         }
+        public void SetAppTheme(int Theme)
+        {
+            if (Theme == 0)//Default
+            {
+                this.BackColor = Color.White;
 
+                //Controls
+                ListLogs.BackColor = Color.Transparent;
+                mTxtBox.BackColor = Color.Transparent;
+            }
+            else if (Theme == 1){//Dark Blue
+                this.BackColor = Color.FromArgb(17, 36, 56);
+                //Controls
+                ListLogs.BackColor = Color.FromArgb(34, 60, 69);
+                mTxtBox.BackColor = Color.FromArgb(34, 60, 69);
+            }else if (Theme == 2){//Dark Silver
+                this.BackColor = Color.FromArgb(73,82,97);
+                //Controls
+                ListLogs.BackColor = Color.FromArgb(48,54,64);
+                mTxtBox.BackColor = Color.FromArgb(48, 54, 64);
+            }
+
+                return;
+        }
 
         public static string GetWordUnderCursor(RichTextBox control, MouseEventArgs e)
         {

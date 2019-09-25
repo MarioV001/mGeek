@@ -58,6 +58,8 @@ namespace mGeek
         }
         private void Settings_Load(object sender, EventArgs e)//LOAD Settings
         {
+            ThemeComboBox.SelectedIndex = Properties.Settings.Default.Theme;
+            //
             textBox1.Text = Properties.Settings.Default.LogsPath;//load Path
             AutoLoadLog.Checked = Properties.Settings.Default.AutpLoadLogs;
             EnableMGeek.Checked = Properties.Settings.Default.StartMGekk;
@@ -66,6 +68,8 @@ namespace mGeek
             label2.Text = "Search Box Transparency: " + trackBar1.Value * 10 + "%";
             //search hover
             checkBox1.Checked = Properties.Settings.Default.ExtendSearcHover;
+            //theme
+            ThemeComboBox.SelectedIndex = Properties.Settings.Default.Theme;
         }
         private void Button1_Click(object sender, EventArgs e)//Save Settings
         {
@@ -78,7 +82,14 @@ namespace mGeek
             Properties.Settings.Default.SearchOpacity = trackBar1.Value;
             //search Log Extend
             Properties.Settings.Default.ExtendSearcHover = checkBox1.Checked;
+            //theme
+            if (ThemeComboBox.SelectedIndex != Properties.Settings.Default.Theme)//iff different Theme
+            {
+                MessageBox.Show("Changes will take effect after restart of app!","Theme Changed");
+                Properties.Settings.Default.Theme = ThemeComboBox.SelectedIndex;
+            }
             //SAVE & CLOSE
+            Properties.Settings.Default.Save();
             this.Close();
         }
 

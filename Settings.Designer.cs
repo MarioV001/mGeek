@@ -30,6 +30,7 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.label2 = new System.Windows.Forms.Label();
             this.trackBar1 = new System.Windows.Forms.TrackBar();
             this.tabPage2 = new System.Windows.Forms.TabPage();
@@ -40,7 +41,8 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.ThemeComboBox = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
@@ -68,6 +70,8 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.label3);
+            this.tabPage1.Controls.Add(this.ThemeComboBox);
             this.tabPage1.Controls.Add(this.checkBox1);
             this.tabPage1.Controls.Add(this.label2);
             this.tabPage1.Controls.Add(this.trackBar1);
@@ -79,12 +83,24 @@
             this.tabPage1.Text = "General";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Font = new System.Drawing.Font("Arial", 9.75F);
+            this.checkBox1.Location = new System.Drawing.Point(9, 107);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(220, 20);
+            this.checkBox1.TabIndex = 2;
+            this.checkBox1.Text = "Extend Log Viewer Box On Hover";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(-3, 40);
+            this.label2.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(6, 38);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(148, 13);
+            this.label2.Size = new System.Drawing.Size(180, 16);
             this.label2.TabIndex = 1;
             this.label2.Text = "Search Box Transparency: 08";
             // 
@@ -183,15 +199,29 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.Button2_Click);
             // 
-            // checkBox1
+            // ThemeComboBox
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(3, 107);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(185, 17);
-            this.checkBox1.TabIndex = 2;
-            this.checkBox1.Text = "Extend Log Viewer Box On Hover";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.ThemeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ThemeComboBox.Font = new System.Drawing.Font("Arial", 9.75F);
+            this.ThemeComboBox.FormattingEnabled = true;
+            this.ThemeComboBox.Items.AddRange(new object[] {
+            "Default",
+            "Dark Blue",
+            "Dark Silver"});
+            this.ThemeComboBox.Location = new System.Drawing.Point(59, 157);
+            this.ThemeComboBox.Name = "ThemeComboBox";
+            this.ThemeComboBox.Size = new System.Drawing.Size(247, 24);
+            this.ThemeComboBox.TabIndex = 3;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Arial", 9.75F);
+            this.label3.Location = new System.Drawing.Point(6, 160);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(47, 16);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "Theme";
             // 
             // Settings
             // 
@@ -232,5 +262,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TrackBar trackBar1;
         private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ComboBox ThemeComboBox;
     }
 }

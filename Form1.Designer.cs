@@ -91,8 +91,6 @@
             mTxtBox.TabIndex = 0;
             mTxtBox.Text = "0|";
             mTxtBox.WordWrap = false;
-            mTxtBox.KeyDown += mTxtBox_KeyDown;
-            mTxtBox.MouseDown += MTxtBox_MouseDown;
             // 
             // ListContextMenu
             // 
@@ -163,7 +161,7 @@
             this.toolStripDropDownButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton2.Image")));
             this.toolStripDropDownButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripDropDownButton2.Name = "toolStripDropDownButton2";
-            this.toolStripDropDownButton2.Size = new System.Drawing.Size(47, 22);
+            this.toolStripDropDownButton2.Size = new System.Drawing.Size(48, 22);
             this.toolStripDropDownButton2.Text = "Tools";
             // 
             // mGeekToolStripMenuItem
@@ -171,34 +169,34 @@
             this.mGeekToolStripMenuItem.Checked = true;
             this.mGeekToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.mGeekToolStripMenuItem.Name = "mGeekToolStripMenuItem";
-            this.mGeekToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
+            this.mGeekToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.mGeekToolStripMenuItem.Text = "mGeek Syntax";
             this.mGeekToolStripMenuItem.Click += new System.EventHandler(this.MGeekToolStripMenuItem_Click);
             // 
             // debugTimeToolStripMenuItem
             // 
             this.debugTimeToolStripMenuItem.Name = "debugTimeToolStripMenuItem";
-            this.debugTimeToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
+            this.debugTimeToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.debugTimeToolStripMenuItem.Text = "Debug Time";
             // 
             // searchToolStripMenuItem
             // 
             this.searchToolStripMenuItem.Name = "searchToolStripMenuItem";
-            this.searchToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.searchToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.searchToolStripMenuItem.Text = "Search";
             this.searchToolStripMenuItem.Click += new System.EventHandler(this.searchToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem
             // 
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.helpToolStripMenuItem.Text = "Help";
             this.helpToolStripMenuItem.Click += new System.EventHandler(this.HelpToolStripMenuItem_Click);
             // 
             // settingsToolStripMenuItem
             // 
             this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
-            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
+            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.settingsToolStripMenuItem.Text = "Settings";
             this.settingsToolStripMenuItem.Click += new System.EventHandler(this.SettingsToolStripMenuItem_Click);
             // 
@@ -384,8 +382,8 @@
             this.LRButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.LRButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.LRButton.FlatAppearance.BorderSize = 0;
-            this.LRButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
-            this.LRButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
+            this.LRButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.LRButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.LRButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.LRButton.Location = new System.Drawing.Point(648, 58);
             this.LRButton.Name = "LRButton";
@@ -403,8 +401,8 @@
             this.MercButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.MercButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.MercButton.FlatAppearance.BorderSize = 0;
-            this.MercButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
-            this.MercButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
+            this.MercButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.MercButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.MercButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.MercButton.Location = new System.Drawing.Point(465, 58);
             this.MercButton.Name = "MercButton";
@@ -422,8 +420,8 @@
             this.BMWButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.BMWButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.BMWButton.FlatAppearance.BorderSize = 0;
-            this.BMWButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
-            this.BMWButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
+            this.BMWButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.BMWButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.BMWButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BMWButton.Location = new System.Drawing.Point(294, 58);
             this.BMWButton.Name = "BMWButton";
