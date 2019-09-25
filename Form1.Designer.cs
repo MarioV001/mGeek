@@ -214,7 +214,6 @@
             this.ListLogs.ScrollAlwaysVisible = true;
             this.ListLogs.Size = new System.Drawing.Size(278, 148);
             this.ListLogs.TabIndex = 10;
-            this.ListLogs.SelectedIndexChanged += new System.EventHandler(this.ListLogs_SelectedIndexChanged);
             this.ListLogs.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.ListLogs_MouseDoubleClick);
             this.ListLogs.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ListLogs_MouseDown);
             this.ListLogs.MouseLeave += new System.EventHandler(this.ListLogs_MouseLeave);

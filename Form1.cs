@@ -220,11 +220,6 @@ namespace mGeek
             if (LRPanel.Visible == false) LRButton.BackgroundImage = Properties.Resources.LR;
         }
 
-        private void ListLogs_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void ListLogs_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             DateTime DateNow = DateTime.Now;
@@ -239,7 +234,7 @@ namespace mGeek
             }
             else if (e.Button == System.Windows.Forms.MouseButtons.Left)
             {
-                if (ListLogs.SelectedIndex == ListLogs.IndexFromPoint(e.X, e.Y))
+                if (ListLogs.SelectedIndex != -1)
                 {
                     DateTime DateNow = DateTime.Now;
                     if (LastLogLoad == @Properties.Settings.Default.LogsPath + @"\" + CurrentBrandBrowse + @"\" + DateNow.Year.ToString("0000") + @"\" + MonthSelectLogs.Text + @"\" + ListLogs.SelectedItem) return;
@@ -306,12 +301,12 @@ namespace mGeek
                 mTxtBox.BackColor = Color.DarkSlateGray;
             }
             else if (Theme == 1){//Dark Blue
-                this.BackColor = Color.FromArgb(17, 36, 56);
+                this.BackColor = Color.FromArgb(43,53,73);
                 //Controls
                 ListLogs.BackColor = Color.FromArgb(34, 60, 69);
                 mTxtBox.BackColor = Color.FromArgb(34, 60, 69);
             }else if (Theme == 2){//Dark Silver
-                this.BackColor = Color.FromArgb(73,82,97);
+                this.BackColor = Color.FromArgb(55,65,75);
                 //Controls
                 ListLogs.BackColor = Color.FromArgb(48,54,64);
                 mTxtBox.BackColor = Color.FromArgb(48, 54, 64);
