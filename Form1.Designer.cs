@@ -91,6 +91,8 @@
             mTxtBox.TabIndex = 0;
             mTxtBox.Text = "0|";
             mTxtBox.WordWrap = false;
+            mTxtBox.KeyDown += mTxtBox_KeyDown;
+            mTxtBox.MouseDown += MTxtBox_MouseDown;
             // 
             // ListContextMenu
             // 
@@ -182,8 +184,9 @@
             // searchToolStripMenuItem
             // 
             this.searchToolStripMenuItem.Name = "searchToolStripMenuItem";
-            this.searchToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
+            this.searchToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.searchToolStripMenuItem.Text = "Search";
+            this.searchToolStripMenuItem.Click += new System.EventHandler(this.searchToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem
             // 
@@ -359,7 +362,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(269, 52);
+            this.tabPage2.Size = new System.Drawing.Size(269, 1);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Car Logs";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -369,7 +372,7 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(269, 52);
+            this.tabPage3.Size = new System.Drawing.Size(269, 1);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "CIP Logs";
             this.tabPage3.UseVisualStyleBackColor = true;

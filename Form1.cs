@@ -239,18 +239,6 @@ namespace mGeek
             OpenLogToRead(LastLogLoad);
         }
 
-        private void MTxtBox_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyData == Keys.F4)//refresh Log
-            {
-                OpenLogToRead(LastLogLoad);
-            }
-            if (e.KeyData == (Keys.Control | Keys.F))
-            {
-                SearchForm SrcHForm = new SearchForm();
-                SrcHForm.Show();
-            }
-        }
 
         public void SetLogInfo()
         {
@@ -399,6 +387,25 @@ namespace mGeek
         private void ListLogs_MouseLeave(object sender, EventArgs e)
         {
             if (Properties.Settings.Default.ExtendSearcHover == true) ListLogs.Height = 150;
+        }
+
+        private void mTxtBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == Keys.F4)//refresh Log
+            {
+                OpenLogToRead(LastLogLoad);
+            }
+            if (e.KeyData == (Keys.Control | Keys.F))
+            {
+                SearchForm SrcHForm = new SearchForm();
+                SrcHForm.Show();
+            }
+        }
+
+        private void searchToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SearchForm SrcHForm = new SearchForm();
+            SrcHForm.Show();
         }
     }
 }
