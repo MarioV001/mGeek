@@ -69,6 +69,7 @@ namespace mGeek
         }
         private void Button1_Click(object sender, EventArgs e)//Save Settings
         {
+            Properties.Settings.Default.LogsPath = textBox1.Text;//save Locatio
             //save
             Properties.Settings.Default.AutpLoadLogs = AutoLoadLog.Checked;
             Properties.Settings.Default.StartMGekk = EnableMGeek.Checked;
@@ -94,8 +95,7 @@ namespace mGeek
             {
                 // Now here's our save folder
                 string savePath = Path.GetDirectoryName(sf.FileName);
-                Properties.Settings.Default.LogsPath = savePath + @"\";
-                textBox1.Text = Properties.Settings.Default.LogsPath;
+                textBox1.Text = savePath;
             }
         }
 

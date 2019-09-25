@@ -25,7 +25,7 @@ namespace mGeek.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("I:\\bmw\\2019\\")]
         public string LogsPath {
             get {
                 return ((string)(this["LogsPath"]));
@@ -80,6 +80,42 @@ namespace mGeek.Properties {
             }
             set {
                 this["ExtendSearcHover"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int LastBrandBrowsing {
+            get {
+                return ((int)(this["LastBrandBrowsing"]));
+            }
+            set {
+                this["LastBrandBrowsing"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool LoadLastBrand {
+            get {
+                return ((bool)(this["LoadLastBrand"]));
+            }
+            set {
+                this["LoadLastBrand"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int hk {
+            get {
+                return ((int)(this["hk"]));
+            }
+            set {
+                this["hk"] = value;
             }
         }
     }

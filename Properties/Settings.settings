@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="LogsPath" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">I:\bmw\2019\</Value>
     </Setting>
     <Setting Name="StartMGekk" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
@@ -16,6 +16,15 @@
     </Setting>
     <Setting Name="ExtendSearcHover" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="LastBrandBrowsing" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="LoadLastBrand" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="hk" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
     </Setting>
   </Settings>
 </SettingsFile>

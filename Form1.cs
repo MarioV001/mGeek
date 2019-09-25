@@ -18,27 +18,39 @@ namespace mGeek
     public partial class Form1 : Form
     {
         string LastLogLoad;
+        string CurrentBrandBrowse;
         public Form1()
         {
             InitializeComponent();
         }
-
+        public void RefreshLogFiles()
+        {
+            List<string> logListContent = new List<string>();
+            //I:\bmw\2019\
+            DateTime DateNow = DateTime.Now;
+            logListContent = Directory.GetFiles(@Properties.Settings.Default.LogsPath + @"\" + CurrentBrandBrowse + @"\" + DateNow.Year.ToString("0000") + @"\" + MonthSelectLogs.Text + @"\").ToList();
+            logListContent = logListContent.OrderByDescending(x => x).ToList();
+            for(int count = 0; count < logListContent.Count(); count++)//clear out the names
+                {
+                string[] words = logListContent[count].Split('\\');
+                logListContent[count] = words[words.Count()-1];
+            }
+            ListLogs.DataSource = null;
+            ListLogs.DataSource = logListContent.ToArray();
+        }
         private void Form1_Load(object sender, EventArgs e)
         {
+            if (Properties.Settings.Default.LoadLastBrand == true) SetWorkingVehicle(Properties.Settings.Default.LastBrandBrowsing,Properties.Settings.Default.AutpLoadLogs);
+             else SetWorkingVehicle(0, Properties.Settings.Default.AutpLoadLogs);
+            //load log into RichTxt
             mTxtBox.ReadOnly = true;
             DateTime DateNow = DateTime.Now;
             MonthSelectLogs.SelectedItem = DateNow.Month.ToString("00");
 
-            if (Properties.Settings.Default.AutpLoadLogs == true)
-            {
-                ListLogs.Items.Clear();
-                DirectoryInfo di = new DirectoryInfo(Properties.Settings.Default.LogsPath + DateNow.Month.ToString("00"));
-                foreach (FileInfo file in FindFiles(di, "*.*"))
-                {
-                    // process file
-                    ListLogs.Items.Add(file.ToString());
-                }
-            }
+        }
+        private void refreshLogsListToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            RefreshLogFiles();
         }
         public IEnumerable<FileInfo> FindFiles(DirectoryInfo startDirectory, string pattern)
         {
@@ -72,18 +84,19 @@ namespace mGeek
         public void ReadFile(string FilePath, long length, RichTextBox RchText, bool Syntax = false)
         {
             StringBuilder resultAsString = new StringBuilder();
-            using (MemoryMappedFile memoryMappedFile = MemoryMappedFile.CreateFromFile(FilePath))
-            using (MemoryMappedViewStream memoryMappedViewStream = memoryMappedFile.CreateViewStream(0, length))
+            FileStream file = File.OpenRead(FilePath);
+            using (MemoryMappedFile mappedFile = MemoryMappedFile.CreateFromFile(file, "PEIMAGE", file.Length, MemoryMappedFileAccess.Read, null, 0, false))
+            using (var viewStream = mappedFile.CreateViewStream(0, file.Length, MemoryMappedFileAccess.Read))
             {
                 resultAsString.Append(LineCountConvert(0));//add 0 as first line
                 int LineCount = 0;
                 for (int i = 0; i < length; i++)//do byte by byte
                 {
-                    int result = memoryMappedViewStream.ReadByte();
+                    int result = viewStream.ReadByte();
                     if (result == -1) break;
                     char letter = (char)result;
-                    //MessageBox.Show(((byte)letter).ToString() + "  |  " + letter);
-                    if ((byte)letter == 11) continue;//cantch invalid/unwanted chars(only in ASCI format)
+                    //MessageBox.Show(((byte)letter).ToString() + "  |  " + letter);//for debbuging unwanted Chars
+                    if ((byte)letter == 11 || (byte)letter == 17 || (byte)letter == 0) continue;//cantch invalid/unwanted chars(only in ASCI format)|----Ù = 217
                     resultAsString.Append(letter);
                     if (letter == '\n')
                     {
@@ -111,7 +124,7 @@ namespace mGeek
                 string UTF8Str = Encoding.UTF8.GetString(bytes);
 
                 if (UTF8Str == " " || UTF8Str == "." || UTF8Str == ":" || UTF8Str == "|" || UTF8Str == "+" || UTF8Str == "(" || UTF8Str.ToCharArray()[0] == '"' || UTF8Str == ")"
-                            || UTF8Str == "," || UTF8Str == "_" || UTF8Str == "=" || UTF8Str == ";" || UTF8Str == "{" || UTF8Str == "}" || UTF8Str == "\n" || UTF8Str == "\n")//if space
+                            || UTF8Str == "," || UTF8Str == "_" || UTF8Str == "=" || UTF8Str == ";" || UTF8Str == "{" || UTF8Str == "}" || UTF8Str == "\n" || UTF8Str == "\n")//using this to separete and cout word positions
                 {
                     bool contains = MatchStrings.Contains(TempWord, StringComparer.OrdinalIgnoreCase);
                     if (contains)//if match found from Match string
@@ -124,7 +137,7 @@ namespace mGeek
                     Wordindex = 0;
                     TempWord = "";
                 }
-                else if (letter == '\r' || UTF8Str == "")
+                else if (letter == '\r')
                 {
                     //do nothing, multiple line
                 }
@@ -197,7 +210,8 @@ namespace mGeek
 
         private void ListLogs_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            OpenLogToRead(Properties.Settings.Default.LogsPath + MonthSelectLogs.Text + @"\" + ListLogs.SelectedItem);
+            DateTime DateNow = DateTime.Now;
+            OpenLogToRead(@Properties.Settings.Default.LogsPath + @"\" + CurrentBrandBrowse + @"\" + DateNow.Year.ToString("0000") + @"\" + MonthSelectLogs.Text + @"\" + ListLogs.SelectedItem);
         }
 
         private void ListLogs_MouseDown(object sender, MouseEventArgs e)
@@ -210,8 +224,9 @@ namespace mGeek
             {
                 if (ListLogs.SelectedIndex == ListLogs.IndexFromPoint(e.X, e.Y))
                 {
-                    if (LastLogLoad == Properties.Settings.Default.LogsPath + MonthSelectLogs.Text + @"\" + ListLogs.SelectedItem) return;
-                    LastLogLoad = Properties.Settings.Default.LogsPath + MonthSelectLogs.Text + @"\" + ListLogs.SelectedItem;
+                    DateTime DateNow = DateTime.Now;
+                    if (LastLogLoad == @Properties.Settings.Default.LogsPath + @"\" + CurrentBrandBrowse + @"\" + DateNow.Year.ToString("0000") + @"\" + MonthSelectLogs.Text + @"\" + ListLogs.SelectedItem) return;
+                    LastLogLoad = @Properties.Settings.Default.LogsPath + @"\" + CurrentBrandBrowse + @"\" + DateNow.Year.ToString("0000") + @"\" + MonthSelectLogs.Text + @"\" + ListLogs.SelectedItem;
                     OpenLogToRead(LastLogLoad);
                 }
             }
@@ -249,19 +264,22 @@ namespace mGeek
 
         private void Button1_Click(object sender, EventArgs e)
         {
+            ListLogs.DataSource = null;
             ListLogs.Items.Clear();
             DateTime DateNow = DateTime.Now;
-            DirectoryInfo di = new DirectoryInfo(@Properties.Settings.Default.LogsPath + MonthSelectLogs.Text + @"\");
-            //string[] array2 = Directory.GetFiles(@"\\log01.lan.autologic.com\Logs");
-            //FileInfo myFile = new FileInfo(@Properties.Settings.Default.LogsPath);
-            foreach (FileInfo file in FindFiles(di, "*.log"))
+            //load all files in arrey first
+            List<string> logListContent = new List<string>();
+            List<string> SearchList = new List<string>();
+            logListContent = Directory.GetFiles(@Properties.Settings.Default.LogsPath + @"\" + CurrentBrandBrowse + @"\" + DateNow.Year.ToString("0000") + @"\" + MonthSelectLogs.Text + @"\").ToList();
+            logListContent = logListContent.OrderByDescending(x => x).ToList();
+            for (int count = 0; count < logListContent.Count(); count++)//clear out the names
             {
-                // process file
-                if (file.ToString().ToLower().Contains(LogSearchTextBox.Text.ToLower()) == true)
-                {
-                    ListLogs.Items.Add(file.ToString());
-                }
+                string[] words = logListContent[count].Split('\\');
+                if (logListContent[count].ToLower().Contains(LogSearchTextBox.Text.ToLower()) == true) SearchList.Add(words[words.Count() - 1]);
             }
+            ListLogs.DataSource = SearchList.ToArray();
+
+
         }
 
         private void LogSearchList_KeyDown(object sender, KeyEventArgs e)
@@ -332,15 +350,35 @@ namespace mGeek
             if (MERCPanel.Visible == false) MercButton.BackgroundImage = Properties.Resources.MERC;
             if (LRPanel.Visible == false) LRButton.BackgroundImage = Properties.Resources.LR;
         }
-        public void SetWorkingVehicle(int index)
+        public void SetWorkingVehicle(int index,bool RefreshLog =true)
         {
             BMWPanel.Visible = false;
             MERCPanel.Visible = false;
             LRPanel.Visible = false;
-            if (index == 0) BMWPanel.Visible = true;
-            if (index == 1) MERCPanel.Visible = true;
-            if (index == 2) LRPanel.Visible = true;
+            tabControl1.SelectedTab = tabPage1;
+            tabPage2.Hide();//CarLogs
+            tabPage3.Hide();//CIP Logs
+            if (index == 0){//if BMW
+                BMWPanel.Visible = true;
+                CurrentBrandBrowse = "bmw";
+                tabPage2.Show();//CarLogs
+                tabPage3.Show();
+            }
+            else if (index == 1){//if Mercedes
+                MERCPanel.Visible = true;
+                CurrentBrandBrowse = "merc";
+            }else if (index == 2){//if LandRover
+                LRPanel.Visible = true;
+                CurrentBrandBrowse = "lr";
+            }else if (index == 3){//IF JAG
+                //LRPanel.Visible = true;
+                CurrentBrandBrowse = "jag";
+            }else if (index == 4) {//if VAG
+                //LRPanel.Visible = true;
+                CurrentBrandBrowse = "vag";
+            }
             ClearVHImages();
+            if(RefreshLog==true) RefreshLogFiles();//re load the log list
         }
 
         private void Button1_Click_1(object sender, EventArgs e)
@@ -355,7 +393,7 @@ namespace mGeek
 
         private void ListLogs_MouseHover(object sender, EventArgs e)
         {
-            if (Properties.Settings.Default.ExtendSearcHover == true) ListLogs.Height = this.Height - 200;
+            if (Properties.Settings.Default.ExtendSearcHover == true && ListLogs.Items.Count >= 9) ListLogs.Height = this.Height - 200;
         }
 
         private void ListLogs_MouseLeave(object sender, EventArgs e)
