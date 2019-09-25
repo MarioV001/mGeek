@@ -377,7 +377,7 @@
             // 
             // LRButton
             // 
-            this.LRButton.BackColor = System.Drawing.Color.White;
+            this.LRButton.BackColor = System.Drawing.Color.Transparent;
             this.LRButton.BackgroundImage = global::mGeek.Properties.Resources.LR;
             this.LRButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.LRButton.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -396,7 +396,7 @@
             // 
             // MercButton
             // 
-            this.MercButton.BackColor = System.Drawing.Color.White;
+            this.MercButton.BackColor = System.Drawing.Color.Transparent;
             this.MercButton.BackgroundImage = global::mGeek.Properties.Resources.MERC;
             this.MercButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.MercButton.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -415,7 +415,7 @@
             // 
             // BMWButton
             // 
-            this.BMWButton.BackColor = System.Drawing.Color.White;
+            this.BMWButton.BackColor = System.Drawing.Color.Transparent;
             this.BMWButton.BackgroundImage = global::mGeek.Properties.Resources.CBMW;
             this.BMWButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.BMWButton.Cursor = System.Windows.Forms.Cursors.Hand;
