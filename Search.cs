@@ -67,8 +67,8 @@ namespace mGeek
 
         private void ListSearchBox_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (ListSearchBox.SelectedIndex == -1) return;//Dont show if out of range
             int linenumber = Convert.ToInt32(ListSearchBox.GetItemText(ListSearchBox.SelectedItem).Substring(0, 5));
-            if (linenumber < 0) return;//Dont show if outofrange
             ScrollToLine(linenumber, Form1.mTxtBox);
         }
         void ScrollToLine(int lineNumber, RichTextBox RChTextCTRL)
