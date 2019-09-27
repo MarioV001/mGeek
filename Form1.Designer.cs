@@ -331,10 +331,12 @@
             this.LogSearchTextBox.Name = "LogSearchTextBox";
             this.LogSearchTextBox.Size = new System.Drawing.Size(247, 25);
             this.LogSearchTextBox.TabIndex = 11;
+            this.LogSearchTextBox.TextChanged += new System.EventHandler(this.LogSearchTextBox_TextChanged);
             this.LogSearchTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.LogSearchList_KeyDown);
             // 
             // MonthSelectLogs
             // 
+            this.MonthSelectLogs.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.MonthSelectLogs.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MonthSelectLogs.FormattingEnabled = true;
             this.MonthSelectLogs.Items.AddRange(new object[] {
@@ -375,7 +377,7 @@
             this.VersionTxt.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.VersionTxt.Enabled = false;
             this.VersionTxt.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.VersionTxt.Location = new System.Drawing.Point(923, 213);
+            this.VersionTxt.Location = new System.Drawing.Point(923, 231);
             this.VersionTxt.MaxLength = 100;
             this.VersionTxt.Name = "VersionTxt";
             this.VersionTxt.Size = new System.Drawing.Size(145, 25);

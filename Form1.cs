@@ -467,5 +467,11 @@ namespace mGeek
         {
             Process.Start(@"Q:\CIP\SP_4_17_13\psdzdata\swe\cafd\");
         }
+
+        private void LogSearchTextBox_TextChanged(object sender, EventArgs e)
+        {
+            LogSearchTextBox.Text = LogSearchTextBox.Text.Replace(" ", "_");
+            LogSearchTextBox.SelectionStart = LogSearchTextBox.Text.Length;
+        }
     }
 }
