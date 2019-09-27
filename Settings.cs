@@ -66,6 +66,7 @@ namespace mGeek
             //search
             trackBar1.Value = Properties.Settings.Default.SearchOpacity;
             label2.Text = "Search Box Transparency: " + trackBar1.Value * 10 + "%";
+            CaseSenCheckBox.Checked = Properties.Settings.Default.CaseSensSearch;
             //search hover
             checkBox1.Checked = Properties.Settings.Default.ExtendSearcHover;
             //theme
@@ -73,6 +74,7 @@ namespace mGeek
         }
         private void Button1_Click(object sender, EventArgs e)//Save Settings
         {
+
             Properties.Settings.Default.LogsPath = textBox1.Text;//save Locatio
             //save
             Properties.Settings.Default.AutpLoadLogs = AutoLoadLog.Checked;
@@ -80,6 +82,7 @@ namespace mGeek
             Properties.Settings.Default.Save();
             //search
             Properties.Settings.Default.SearchOpacity = trackBar1.Value;
+            Properties.Settings.Default.CaseSensSearch = CaseSenCheckBox.Checked;
             //search Log Extend
             Properties.Settings.Default.ExtendSearcHover = checkBox1.Checked;
             //theme

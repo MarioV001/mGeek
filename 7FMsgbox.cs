@@ -33,5 +33,11 @@ namespace mGeek
             if (label3.Text == "7F") label2.Text = "";
             if (label3.Text == "12") label2.Text = "Access Denied";
         }
+
+        public static int Get7FResponseDesc()
+        {
+
+            return 1;
+        }
     }
 }

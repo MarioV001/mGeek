@@ -19,6 +19,7 @@ namespace mGeek
         bool IsClosing = false;
         private void Button1_Click(object sender, EventArgs e)
         {
+            if (textBox1.Text == "") return;
             ListSearchBox.Items.Clear();
             SearchInLog(ListSearchBox, textBox1.Text, Form1.mTxtBox.Text, CaseSCheck.Checked);//COMPILE ERROR
         }
@@ -38,7 +39,7 @@ namespace mGeek
         {
             if (e.KeyData == Keys.Enter)
             {
-                button1.PerformClick();
+                SearchBTN.PerformClick();
                 e.Handled = true;
                 e.SuppressKeyPress = true;
             }
@@ -49,7 +50,7 @@ namespace mGeek
             if (IsClosing == false)
             {
                 this.Opacity = Double.Parse("0." + Properties.Settings.Default.SearchOpacity);
-                this.TopMost = true;
+                //this.TopMost = true;
             }
         }
 
@@ -61,6 +62,7 @@ namespace mGeek
         private void SearchForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             IsClosing = true;
+            Properties.Settings.Default.CaseSensSearch = CaseSCheck.Checked;
         }
 
         private void ListSearchBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -75,6 +77,31 @@ namespace mGeek
             RChTextCTRL.SelectionStart = RChTextCTRL.Find(RChTextCTRL.Lines[lineNumber]);
             RChTextCTRL.ScrollToCaret();
             RChTextCTRL.Focus();
+        }
+
+        private void SearchForm_Load(object sender, EventArgs e)
+        {
+            CaseSCheck.Checked = Properties.Settings.Default.CaseSensSearch;
+            //theme
+            if (Properties.Settings.Default.Theme == 1)
+            {
+                this.BackColor = Color.FromArgb(43, 53, 73);//Dark Blue
+                checkBox1.ForeColor = Color.White;
+                checkBox2.ForeColor = Color.White;
+                CaseSCheck.ForeColor = Color.White;
+            }
+            if (Properties.Settings.Default.Theme == 2)
+            {
+                this.BackColor = Color.FromArgb(55, 65, 75);//Dark Silver
+                checkBox1.ForeColor = Color.White;
+                checkBox2.ForeColor = Color.White;
+                CaseSCheck.ForeColor = Color.White;
+            }
+        }
+
+        private void convertToHEXToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            uint num = uint.Parse(textBox1.Text, System.Globalization.NumberStyles.AllowHexSpecifier);
         }
     }
 }

@@ -19,6 +19,7 @@ namespace mGeek
     {
         string LastLogLoad;
         string CurrentBrandBrowse;
+        string WorkingInSubfolder="";
         public Form1()
         {
             InitializeComponent();
@@ -30,7 +31,7 @@ namespace mGeek
             DateTime DateNow = DateTime.Now;
             try
             {
-                logListContent = Directory.GetFiles(@Properties.Settings.Default.LogsPath + @"\" + CurrentBrandBrowse + @"\" + DateNow.Year.ToString("0000") + @"\" + MonthSelectLogs.Text + @"\").ToList();
+                logListContent = Directory.GetFiles(@Properties.Settings.Default.LogsPath + @"\" + CurrentBrandBrowse + @"\" + DateNow.Year.ToString("0000") + @"\" + MonthSelectLogs.Text + @"\" + WorkingInSubfolder,"*.log").ToList();
                 logListContent = logListContent.OrderByDescending(x => x).ToList();
             }
             catch (IOException ioex)
@@ -223,7 +224,7 @@ namespace mGeek
         private void ListLogs_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             DateTime DateNow = DateTime.Now;
-            OpenLogToRead(@Properties.Settings.Default.LogsPath + @"\" + CurrentBrandBrowse + @"\" + DateNow.Year.ToString("0000") + @"\" + MonthSelectLogs.Text + @"\" + ListLogs.SelectedItem);
+            OpenLogToRead(@Properties.Settings.Default.LogsPath + @"\" + CurrentBrandBrowse + @"\" + DateNow.Year.ToString("0000") + @"\" + MonthSelectLogs.Text + @"\" + WorkingInSubfolder + ListLogs.SelectedItem);
         }
 
         private void ListLogs_MouseDown(object sender, MouseEventArgs e)
@@ -237,9 +238,12 @@ namespace mGeek
                 if (ListLogs.SelectedIndex != -1)
                 {
                     DateTime DateNow = DateTime.Now;
-                    if (LastLogLoad == @Properties.Settings.Default.LogsPath + @"\" + CurrentBrandBrowse + @"\" + DateNow.Year.ToString("0000") + @"\" + MonthSelectLogs.Text + @"\" + ListLogs.SelectedItem) return;
-                    LastLogLoad = @Properties.Settings.Default.LogsPath + @"\" + CurrentBrandBrowse + @"\" + DateNow.Year.ToString("0000") + @"\" + MonthSelectLogs.Text + @"\" + ListLogs.SelectedItem;
+                    if (LastLogLoad == @Properties.Settings.Default.LogsPath + @"\" + CurrentBrandBrowse + @"\" + DateNow.Year.ToString("0000") + @"\" + MonthSelectLogs.Text + @"\" + WorkingInSubfolder + ListLogs.SelectedItem) return;
+                    LastLogLoad = @Properties.Settings.Default.LogsPath + @"\" + CurrentBrandBrowse + @"\" + DateNow.Year.ToString("0000") + @"\" + MonthSelectLogs.Text + @"\"+ WorkingInSubfolder + ListLogs.SelectedItem;
                     OpenLogToRead(LastLogLoad);
+                    //
+                    SearchForm form = Application.OpenForms.OfType<SearchForm>().FirstOrDefault();
+                    if (form != null) form.SearchBTN.PerformClick();
                 }
             }
 
@@ -270,7 +274,7 @@ namespace mGeek
             //load all files in arrey first
             List<string> logListContent = new List<string>();
             List<string> SearchList = new List<string>();
-            logListContent = Directory.GetFiles(@Properties.Settings.Default.LogsPath + @"\" + CurrentBrandBrowse + @"\" + DateNow.Year.ToString("0000") + @"\" + MonthSelectLogs.Text + @"\").ToList();
+            logListContent = Directory.GetFiles(@Properties.Settings.Default.LogsPath + @"\" + CurrentBrandBrowse + @"\" + DateNow.Year.ToString("0000") + @"\" + MonthSelectLogs.Text + @"\" + WorkingInSubfolder, "*.log").ToList();
             logListContent = logListContent.OrderByDescending(x => x).ToList();
             for (int count = 0; count < logListContent.Count(); count++)//clear out the names
             {
@@ -312,8 +316,7 @@ namespace mGeek
                 ListLogs.BackColor = Color.FromArgb(48,54,64);
                 mTxtBox.BackColor = Color.FromArgb(48, 54, 64);
             }
-
-                return;
+            return;
         }
 
         public static string GetWordUnderCursor(RichTextBox control, MouseEventArgs e)
@@ -433,14 +436,36 @@ namespace mGeek
             if (e.KeyData == (Keys.Control | Keys.F))
             {
                 SearchForm SrcHForm = new SearchForm();
-                SrcHForm.Show();
+                SrcHForm.Show(this);
             }
         }
 
         private void searchToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SearchForm SrcHForm = new SearchForm();
-            SrcHForm.Show();
+            SrcHForm.Show(this);
+        }
+
+        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (tabControl1.SelectedIndex == 0) WorkingInSubfolder = "";//No subfolder
+            if (tabControl1.SelectedIndex == 1) WorkingInSubfolder = @"carlogs\";//CarLogs
+
+        }
+
+        private void driveDataFilesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Process.Start(@"I:\dir\2019\09");
+        }
+
+        private void datasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Process.Start(@"Q:\CIP\SP_4_17_13\datas");
+        }
+
+        private void dataDumpToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Process.Start(@"Q:\CIP\SP_4_17_13\psdzdata\swe\cafd\");
         }
     }
 }

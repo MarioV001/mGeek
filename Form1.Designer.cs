@@ -45,6 +45,11 @@
             this.searchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripDropDownButton3 = new System.Windows.Forms.ToolStripDropDownButton();
+            this.codingFilesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.datasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dataDumpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.driveDataFilesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ListLogs = new System.Windows.Forms.ListBox();
             this.SearchLogsButton = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
@@ -91,8 +96,8 @@
             mTxtBox.TabIndex = 0;
             mTxtBox.Text = "0|";
             mTxtBox.WordWrap = false;
-            mTxtBox.MouseDown += MTxtBox_MouseDown;
             mTxtBox.KeyDown += mTxtBox_KeyDown;
+            mTxtBox.MouseDown += MTxtBox_MouseDown;
             // 
             // ListContextMenu
             // 
@@ -118,7 +123,8 @@
             this.toolStrip1.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripDropDownButton1,
-            this.toolStripDropDownButton2});
+            this.toolStripDropDownButton2,
+            this.toolStripDropDownButton3});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(1524, 25);
@@ -163,7 +169,7 @@
             this.toolStripDropDownButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton2.Image")));
             this.toolStripDropDownButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripDropDownButton2.Name = "toolStripDropDownButton2";
-            this.toolStripDropDownButton2.Size = new System.Drawing.Size(48, 22);
+            this.toolStripDropDownButton2.Size = new System.Drawing.Size(47, 22);
             this.toolStripDropDownButton2.Text = "Tools";
             // 
             // mGeekToolStripMenuItem
@@ -171,36 +177,78 @@
             this.mGeekToolStripMenuItem.Checked = true;
             this.mGeekToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.mGeekToolStripMenuItem.Name = "mGeekToolStripMenuItem";
-            this.mGeekToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.mGeekToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
             this.mGeekToolStripMenuItem.Text = "mGeek Syntax";
             this.mGeekToolStripMenuItem.Click += new System.EventHandler(this.MGeekToolStripMenuItem_Click);
             // 
             // debugTimeToolStripMenuItem
             // 
             this.debugTimeToolStripMenuItem.Name = "debugTimeToolStripMenuItem";
-            this.debugTimeToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.debugTimeToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
             this.debugTimeToolStripMenuItem.Text = "Debug Time";
             // 
             // searchToolStripMenuItem
             // 
             this.searchToolStripMenuItem.Name = "searchToolStripMenuItem";
-            this.searchToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.searchToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
             this.searchToolStripMenuItem.Text = "Search";
             this.searchToolStripMenuItem.Click += new System.EventHandler(this.searchToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem
             // 
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
             this.helpToolStripMenuItem.Text = "Help";
             this.helpToolStripMenuItem.Click += new System.EventHandler(this.HelpToolStripMenuItem_Click);
             // 
             // settingsToolStripMenuItem
             // 
             this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
-            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
             this.settingsToolStripMenuItem.Text = "Settings";
             this.settingsToolStripMenuItem.Click += new System.EventHandler(this.SettingsToolStripMenuItem_Click);
+            // 
+            // toolStripDropDownButton3
+            // 
+            this.toolStripDropDownButton3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripDropDownButton3.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.codingFilesToolStripMenuItem,
+            this.driveDataFilesToolStripMenuItem});
+            this.toolStripDropDownButton3.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton3.Image")));
+            this.toolStripDropDownButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripDropDownButton3.Name = "toolStripDropDownButton3";
+            this.toolStripDropDownButton3.Size = new System.Drawing.Size(91, 22);
+            this.toolStripDropDownButton3.Text = "File Shortcuts";
+            // 
+            // codingFilesToolStripMenuItem
+            // 
+            this.codingFilesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.datasToolStripMenuItem,
+            this.dataDumpToolStripMenuItem});
+            this.codingFilesToolStripMenuItem.Name = "codingFilesToolStripMenuItem";
+            this.codingFilesToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
+            this.codingFilesToolStripMenuItem.Text = "Coding Files";
+            // 
+            // datasToolStripMenuItem
+            // 
+            this.datasToolStripMenuItem.Name = "datasToolStripMenuItem";
+            this.datasToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
+            this.datasToolStripMenuItem.Text = "Datas";
+            this.datasToolStripMenuItem.Click += new System.EventHandler(this.datasToolStripMenuItem_Click);
+            // 
+            // dataDumpToolStripMenuItem
+            // 
+            this.dataDumpToolStripMenuItem.Name = "dataDumpToolStripMenuItem";
+            this.dataDumpToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
+            this.dataDumpToolStripMenuItem.Text = "Data Dump";
+            this.dataDumpToolStripMenuItem.Click += new System.EventHandler(this.dataDumpToolStripMenuItem_Click);
+            // 
+            // driveDataFilesToolStripMenuItem
+            // 
+            this.driveDataFilesToolStripMenuItem.Name = "driveDataFilesToolStripMenuItem";
+            this.driveDataFilesToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
+            this.driveDataFilesToolStripMenuItem.Text = "Drive Data Files";
+            this.driveDataFilesToolStripMenuItem.Click += new System.EventHandler(this.driveDataFilesToolStripMenuItem_Click);
             // 
             // ListLogs
             // 
@@ -340,18 +388,19 @@
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
-            this.tabControl1.Location = new System.Drawing.Point(0, 78);
+            this.tabControl1.Location = new System.Drawing.Point(0, 82);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(277, 27);
+            this.tabControl1.Size = new System.Drawing.Size(277, 20);
             this.tabControl1.TabIndex = 23;
+            this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
             // 
             // tabPage1
             // 
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(269, 1);
+            this.tabPage1.Size = new System.Drawing.Size(269, 0);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Logs";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -361,7 +410,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(269, 1);
+            this.tabPage2.Size = new System.Drawing.Size(269, 0);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Car Logs";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -371,7 +420,7 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(269, 1);
+            this.tabPage3.Size = new System.Drawing.Size(269, 0);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "CIP Logs";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -533,6 +582,11 @@
         private System.Windows.Forms.ContextMenuStrip ListContextMenu;
         private System.Windows.Forms.ToolStripMenuItem searchToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem refreshLogsListToolStripMenuItem;
+        private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton3;
+        private System.Windows.Forms.ToolStripMenuItem codingFilesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem driveDataFilesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem datasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem dataDumpToolStripMenuItem;
         public static System.Windows.Forms.RichTextBox mTxtBox;
     }
 }
