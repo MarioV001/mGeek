@@ -63,6 +63,7 @@ namespace mGeek
             textBox1.Text = Properties.Settings.Default.LogsPath;//load Path
             AutoLoadLog.Checked = Properties.Settings.Default.AutpLoadLogs;
             EnableMGeek.Checked = Properties.Settings.Default.StartMGekk;
+            LogDetailsLoad.Checked = Properties.Settings.Default.LogDetailsLoad;
             //search
             trackBar1.Value = Properties.Settings.Default.SearchOpacity;
             label2.Text = "Search Box Transparency: " + trackBar1.Value * 10 + "%";
@@ -79,6 +80,7 @@ namespace mGeek
             //save
             Properties.Settings.Default.AutpLoadLogs = AutoLoadLog.Checked;
             Properties.Settings.Default.StartMGekk = EnableMGeek.Checked;
+            Properties.Settings.Default.LogDetailsLoad = LogDetailsLoad.Checked;
             Properties.Settings.Default.Save();
             //search
             Properties.Settings.Default.SearchOpacity = trackBar1.Value;

@@ -39,12 +39,13 @@
             this.button3 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.CaseSenCheckBox = new System.Windows.Forms.CheckBox();
             this.label2 = new System.Windows.Forms.Label();
             this.trackBar1 = new System.Windows.Forms.TrackBar();
-            this.CaseSenCheckBox = new System.Windows.Forms.CheckBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.LogDetailsLoad = new System.Windows.Forms.CheckBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -122,6 +123,7 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.LogDetailsLoad);
             this.tabPage2.Controls.Add(this.EnableMGeek);
             this.tabPage2.Controls.Add(this.AutoLoadLog);
             this.tabPage2.Controls.Add(this.button3);
@@ -182,6 +184,49 @@
             this.textBox1.Size = new System.Drawing.Size(338, 23);
             this.textBox1.TabIndex = 0;
             // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.CaseSenCheckBox);
+            this.tabPage3.Controls.Add(this.label2);
+            this.tabPage3.Controls.Add(this.trackBar1);
+            this.tabPage3.Location = new System.Drawing.Point(114, 4);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(597, 313);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Search";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // CaseSenCheckBox
+            // 
+            this.CaseSenCheckBox.AutoSize = true;
+            this.CaseSenCheckBox.Location = new System.Drawing.Point(24, 87);
+            this.CaseSenCheckBox.Name = "CaseSenCheckBox";
+            this.CaseSenCheckBox.Size = new System.Drawing.Size(133, 17);
+            this.CaseSenCheckBox.TabIndex = 4;
+            this.CaseSenCheckBox.Text = "Case Sensitive Search";
+            this.CaseSenCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(21, 18);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(180, 16);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "Search Box Transparency: 08";
+            // 
+            // trackBar1
+            // 
+            this.trackBar1.BackColor = System.Drawing.Color.White;
+            this.trackBar1.Location = new System.Drawing.Point(17, 36);
+            this.trackBar1.Minimum = 1;
+            this.trackBar1.Name = "trackBar1";
+            this.trackBar1.Size = new System.Drawing.Size(251, 45);
+            this.trackBar1.TabIndex = 2;
+            this.trackBar1.Value = 8;
+            // 
             // button1
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -204,48 +249,15 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.Button2_Click);
             // 
-            // tabPage3
+            // LogDetailsLoad
             // 
-            this.tabPage3.Controls.Add(this.CaseSenCheckBox);
-            this.tabPage3.Controls.Add(this.label2);
-            this.tabPage3.Controls.Add(this.trackBar1);
-            this.tabPage3.Location = new System.Drawing.Point(114, 4);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(597, 313);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "Search";
-            this.tabPage3.UseVisualStyleBackColor = true;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(21, 18);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(180, 16);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Search Box Transparency: 08";
-            // 
-            // trackBar1
-            // 
-            this.trackBar1.BackColor = System.Drawing.Color.White;
-            this.trackBar1.Location = new System.Drawing.Point(17, 36);
-            this.trackBar1.Minimum = 1;
-            this.trackBar1.Name = "trackBar1";
-            this.trackBar1.Size = new System.Drawing.Size(251, 45);
-            this.trackBar1.TabIndex = 2;
-            this.trackBar1.Value = 8;
-            // 
-            // CaseSenCheckBox
-            // 
-            this.CaseSenCheckBox.AutoSize = true;
-            this.CaseSenCheckBox.Location = new System.Drawing.Point(24, 87);
-            this.CaseSenCheckBox.Name = "CaseSenCheckBox";
-            this.CaseSenCheckBox.Size = new System.Drawing.Size(133, 17);
-            this.CaseSenCheckBox.TabIndex = 4;
-            this.CaseSenCheckBox.Text = "Case Sensitive Search";
-            this.CaseSenCheckBox.UseVisualStyleBackColor = true;
+            this.LogDetailsLoad.AutoSize = true;
+            this.LogDetailsLoad.Location = new System.Drawing.Point(9, 100);
+            this.LogDetailsLoad.Name = "LogDetailsLoad";
+            this.LogDetailsLoad.Size = new System.Drawing.Size(276, 17);
+            this.LogDetailsLoad.TabIndex = 5;
+            this.LogDetailsLoad.Text = "Automatically RetrieveLog Details When Log Loaded\r\n";
+            this.LogDetailsLoad.UseVisualStyleBackColor = true;
             // 
             // Settings
             // 
@@ -292,5 +304,6 @@
         private System.Windows.Forms.CheckBox CaseSenCheckBox;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TrackBar trackBar1;
+        private System.Windows.Forms.CheckBox LogDetailsLoad;
     }
 }

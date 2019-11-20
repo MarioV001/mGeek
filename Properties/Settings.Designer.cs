@@ -130,5 +130,17 @@ namespace mGeek.Properties {
                 this["CaseSensSearch"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool LogDetailsLoad {
+            get {
+                return ((bool)(this["LogDetailsLoad"]));
+            }
+            set {
+                this["LogDetailsLoad"] = value;
+            }
+        }
     }
 }

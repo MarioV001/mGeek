@@ -30,14 +30,14 @@
         {
             this.components = new System.ComponentModel.Container();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.convertToHEXToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.convertToASCIToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.SearchBTN = new System.Windows.Forms.Button();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.CaseSCheck = new System.Windows.Forms.CheckBox();
             this.ListSearchBox = new System.Windows.Forms.ListBox();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.convertToHEXToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.convertToASCIToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -53,6 +53,28 @@
             this.textBox1.Size = new System.Drawing.Size(649, 26);
             this.textBox1.TabIndex = 0;
             this.textBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextBox1_KeyDown);
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.convertToHEXToolStripMenuItem,
+            this.convertToASCIToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(160, 48);
+            // 
+            // convertToHEXToolStripMenuItem
+            // 
+            this.convertToHEXToolStripMenuItem.Name = "convertToHEXToolStripMenuItem";
+            this.convertToHEXToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
+            this.convertToHEXToolStripMenuItem.Text = "Convert To HEX";
+            this.convertToHEXToolStripMenuItem.Click += new System.EventHandler(this.convertToHEXToolStripMenuItem_Click);
+            // 
+            // convertToASCIToolStripMenuItem
+            // 
+            this.convertToASCIToolStripMenuItem.Name = "convertToASCIToolStripMenuItem";
+            this.convertToASCIToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
+            this.convertToASCIToolStripMenuItem.Text = "Convert To ASCI";
+            this.convertToASCIToolStripMenuItem.Click += new System.EventHandler(this.convertToASCIToolStripMenuItem_Click);
             // 
             // SearchBTN
             // 
@@ -115,27 +137,6 @@
             this.ListSearchBox.Size = new System.Drawing.Size(773, 260);
             this.ListSearchBox.TabIndex = 6;
             this.ListSearchBox.SelectedIndexChanged += new System.EventHandler(this.ListSearchBox_SelectedIndexChanged);
-            // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.convertToHEXToolStripMenuItem,
-            this.convertToASCIToolStripMenuItem});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 70);
-            // 
-            // convertToHEXToolStripMenuItem
-            // 
-            this.convertToHEXToolStripMenuItem.Name = "convertToHEXToolStripMenuItem";
-            this.convertToHEXToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.convertToHEXToolStripMenuItem.Text = "Convert To HEX";
-            this.convertToHEXToolStripMenuItem.Click += new System.EventHandler(this.convertToHEXToolStripMenuItem_Click);
-            // 
-            // convertToASCIToolStripMenuItem
-            // 
-            this.convertToASCIToolStripMenuItem.Name = "convertToASCIToolStripMenuItem";
-            this.convertToASCIToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.convertToASCIToolStripMenuItem.Text = "Convert To ASCI";
             // 
             // SearchForm
             // 
