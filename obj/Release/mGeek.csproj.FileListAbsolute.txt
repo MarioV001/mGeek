@@ -1,5 +1,3 @@
-C:\Users\mario.vardarov\Source\Repos\mGeek\bin\Release\mGeek.exe
-C:\Users\mario.vardarov\Source\Repos\mGeek\obj\Release\mGeek.csprojAssemblyReference.cache
 C:\Users\mario.vardarov\Source\Repos\mGeek\obj\Release\mGeek._7FMsgbox.resources
 C:\Users\mario.vardarov\Source\Repos\mGeek\obj\Release\mGeek.Form1.resources
 C:\Users\mario.vardarov\Source\Repos\mGeek\obj\Release\mGeek.Help.resources
@@ -9,6 +7,8 @@ C:\Users\mario.vardarov\Source\Repos\mGeek\obj\Release\mGeek.Settings.resources
 C:\Users\mario.vardarov\Source\Repos\mGeek\obj\Release\mGeek.csproj.GenerateResource.cache
 C:\Users\mario.vardarov\Source\Repos\mGeek\obj\Release\mGeek.csproj.CoreCompileInputs.cache
 C:\Users\mario.vardarov\Source\Repos\mGeek\bin\Release\mGeek.exe.config
+C:\Users\mario.vardarov\Source\Repos\mGeek\bin\Release\mGeek.exe
 C:\Users\mario.vardarov\Source\Repos\mGeek\bin\Release\mGeek.pdb
 C:\Users\mario.vardarov\Source\Repos\mGeek\obj\Release\mGeek.exe
 C:\Users\mario.vardarov\Source\Repos\mGeek\obj\Release\mGeek.pdb
+C:\Users\mario.vardarov\Source\Repos\mGeek\obj\Release\mGeek.csprojAssemblyReference.cache

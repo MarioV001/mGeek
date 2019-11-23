@@ -90,6 +90,10 @@ namespace mGeek
             stopwatch.Stop();
             if (mGeekToolStripMenuItem.Checked == true) TimeDebug.Text = "Time To Load With mGeek: " + stopwatch.ElapsedMilliseconds + " ms";
             else TimeDebug.Text = "Time To Load: " + stopwatch.ElapsedMilliseconds + " ms";
+            if (Properties.Settings.Default.LogDetailsLoad == true)//if Auto loading details from LOG
+            {
+
+            }
             //mTxtBox.Focus();
         }
         public void ReadFile(string FilePath, long length, RichTextBox RchText, bool Syntax = false)
@@ -343,9 +347,11 @@ namespace mGeek
         }
         private void MTxtBox_MouseDown(object sender, MouseEventArgs e)
         {
+            openCFGToolStripMenuItem.Visible = false;
             if (e.Button == System.Windows.Forms.MouseButtons.Right)
             {
                 string word = GetWordUnderCursor(mTxtBox, e);
+                if (word == "" || word == null) return;//if nothing is under cursor, then dont continue code                
                 if (word == "7F")//if we are dealing with 7F respons(get the meaning)
                 {
                     string LineSv = mTxtBox.Lines[GetLineUnderCursor(mTxtBox)];//line propery false
@@ -356,9 +362,37 @@ namespace mGeek
                         Index++;
                         if (CWord == "7F")
                         {
-                            _7FMsgbox frm2 = new _7FMsgbox(Cursor.Position.X - 300, Cursor.Position.Y - 20);
+                            int position = Cursor.Position.X;
+                            if (position < 335) position = 0;
+                            if (position >= 335) position = position - 335;//if there is enought space on the left to fit
+                            _7FMsgbox frm2 = new _7FMsgbox(position, Cursor.Position.Y - 20);
                             frm2.label3.Text = "(" + WordsList[Index + 1] + ")";
                             frm2.ShowDialog();
+                            break;
+                        }
+                    }
+                }else if(word.Contains("|Error")) {
+                    string LineSv = mTxtBox.Lines[GetLineUnderCursor(mTxtBox)];//line propery false
+                    string[] WordsList = LineSv.Split(new char[] { '|', ' '}, StringSplitOptions.None);
+                    switch (WordsList[4])
+                        {
+                        case "432": MessageBox.Show("Error: " + WordsList[4] + Environment.NewLine + "Could not enable coding session in control unit (is ECU Programmed?)"); break;
+                        case "443": MessageBox.Show("Error: " + WordsList[4] + Environment.NewLine + "Could not find coding file"); break;
+                        case "416": MessageBox.Show("Error: " + WordsList[4] + Environment.NewLine + "Could not read programming history"); break;
+                    }
+                    }else if (word.Contains(".cfg,")) {//if we are dealing with CFG files(try opening it)
+                    string LineSv = mTxtBox.Lines[GetLineUnderCursor(mTxtBox)];//line propery false
+                    string[] WordsList = LineSv.Split(new char[] { ',', ' ', '.', '/' }, StringSplitOptions.None);
+                    int Index = 0;
+                    foreach (string CWord in WordsList)
+                    {
+                        Index++;
+                        if (CWord.ToLower() == "cfg")
+                        {
+                            //MessageBox.Show(WordsList[Index -2]);
+                            openCFGToolStripMenuItem.Visible = true;
+                            openCFGToolStripMenuItem.Text = "Open: " + WordsList[Index - 2] + ".cfg";
+                            LogContextMenu.Show();
                             break;
                         }
                     }
@@ -450,7 +484,7 @@ namespace mGeek
         {
             if (tabControl1.SelectedIndex == 0) WorkingInSubfolder = "";//No subfolder
             if (tabControl1.SelectedIndex == 1) WorkingInSubfolder = @"carlogs\";//CarLogs
-
+            SearchLogsButton.PerformClick();
         }
 
         private void driveDataFilesToolStripMenuItem_Click(object sender, EventArgs e)
@@ -473,5 +507,63 @@ namespace mGeek
             LogSearchTextBox.Text = LogSearchTextBox.Text.Replace(" ", "_");
             LogSearchTextBox.SelectionStart = LogSearchTextBox.Text.Length;
         }
+
+        private void openCFGToolStripMenuItem_Click(object sender, EventArgs e)//open selecte CFG
+        {
+            string[] WordsList = mTxtBox.SelectedText.Split(new char[] { ',', ' ', '.', '/' }, StringSplitOptions.None);
+            int Index = 0;
+            foreach (string CWord in WordsList)
+            {
+                Index++;
+                if (CWord.ToLower() == "cfg")
+                {
+                    var lines = File.ReadAllLines("filemap.ini");
+                    for (var i = 0; i < lines.Length; i += 1)
+                    {
+                        var line = lines[i];
+                        // Process line
+                    }
+
+                    switch (WordsList[Index - 2] + "." + WordsList[Index - 1])
+                    {
+                        case "bmw.cfg": Process.Start(@"X:\source\bmw\cfg\common\bmw.cfg"); break;
+                        case "e46.cfg": Process.Start(@"X:\source\bmw\cfg\common\e46.cfg"); break;
+                        case "e60.cfg": Process.Start(@"X:\source\bmw\cfg\common\e60.cfg"); break;
+                        case "e87.cfg": Process.Start(@"X:\source\bmw\cfg\common\e87.cfg"); break;
+                        case "e89.cfg": Process.Start(@"X:\source\bmw\cfg\common\e89.cfg"); break;
+                        case "e90.cfg": Process.Start(@"X:\source\bmw\cfg\common\e90.cfg"); break;
+                        case "F10.cfg": Process.Start(@"X:\source\bmw\cfg\common\F10.cfg"); break;
+                        case "F12.cfg": Process.Start(@"X:\source\bmw\cfg\common\F12.cfg"); break;
+                        case "F15.cfg": Process.Start(@"X:\source\bmw\cfg\common\F15.cfg"); break;
+                        case "F16.cfg": Process.Start(@"X:\source\bmw\cfg\common\F16.cfg"); break;
+                        case "F20.cfg": Process.Start(@"X:\source\bmw\cfg\common\F20.cfg"); break;
+                        case "F22.cfg": Process.Start(@"X:\source\bmw\cfg\common\F22.cfg"); break;
+                        case "F25.cfg": Process.Start(@"X:\source\bmw\cfg\common\F25.cfg"); break;
+                        case "F26.cfg": Process.Start(@"X:\source\bmw\cfg\common\F26.cfg"); break;
+                        case "F30.cfg": Process.Start(@"X:\source\bmw\cfg\common\F30.cfg"); break;
+                        case "F32.cfg": Process.Start(@"X:\source\bmw\cfg\common\F32.cfg"); break;
+                        case "F34.cfg": Process.Start(@"X:\source\bmw\cfg\common\F34.cfg"); break;
+                        case "F45.cfg": Process.Start(@"X:\source\bmw\cfg\common\F45.cfg"); break;
+                        case "F46.cfg": Process.Start(@"X:\source\bmw\cfg\common\F46.cfg"); break;
+                        case "F48.cfg": Process.Start(@"X:\source\bmw\cfg\common\F48.cfg"); break;
+                        case "F49.cfg": Process.Start(@"X:\source\bmw\cfg\common\F49.cfg"); break;
+                        case "F52.cfg": Process.Start(@"X:\source\bmw\cfg\common\F52.cfg"); break;
+                        case "F56.cfg": Process.Start(@"X:\source\bmw\cfg\common\F56.cfg"); break;
+                        case "r56.cfg": Process.Start(@"X:\source\bmw\cfg\common\r56.cfg"); break;
+                        case "faults.cfg": Process.Start(@"X:\source\bmw\cfg\common\faults.cfg"); break;
+                        case "cip.cfg": Process.Start(@"X:\source\bmw\cfg\CODING\cip.cfg"); break;
+                        case "cip_e60.cfg": Process.Start(@"X:\source\bmw\cfg\CODING\cip_e60.cfg"); break;
+                        case "cip_e89.cfg": Process.Start(@"X:\source\bmw\cfg\CODING\cip_e89.cfg"); break;
+                        case "cip_r56.cfg": Process.Start(@"X:\source\bmw\cfg\CODING\cip_r56.cfg"); break;
+                        case "coding.cfg": Process.Start(@"X:\source\bmw\cfg\CODING\coding.cfg"); break;
+                        case "PROGRAM.cfg": Process.Start(@"X:\source\bmw\cfg\CODING\PROGRAM.cfg"); break;
+                        case "UDS_coding.cfg": Process.Start(@"X:\source\bmw\cfg\CODING\UDS_coding.cfg"); break;
+                        case "UDS_Programming.cfg": Process.Start(@"X:\source\bmw\cfg\CODING\UDS_Programming.cfg"); break;
+                    }
+                break;
+                }
+            }
+        }
     }
+
 }

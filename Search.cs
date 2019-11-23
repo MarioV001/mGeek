@@ -101,7 +101,40 @@ namespace mGeek
 
         private void convertToHEXToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            uint num = uint.Parse(textBox1.Text, System.Globalization.NumberStyles.AllowHexSpecifier);
+            textBox1.Text = ToHex(textBox1.Text);
+        }
+        private void convertToASCIToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            textBox1.Text = ToAscii(textBox1.Text);
+        }
+
+        public static string ToHex(string input)
+        {
+            StringBuilder sb = new StringBuilder();
+            foreach (char c in input)
+                sb.AppendFormat("0x{0:X2} ", (int)c);
+            return sb.ToString().Replace("0x", "").Trim();
+        }
+
+        public static string ToAscii(string input)
+        {
+            input = input.Replace(" ", "");
+
+            StringBuilder sb = new StringBuilder();
+
+            for (int i = 0; i < input.Length; i += 2)
+            {
+                try
+                {
+                    string hs = input.Substring(i, 2);
+                    sb.Append(Convert.ToChar(Convert.ToUInt32(hs, 16)));
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
+            }
+            return sb.ToString();
         }
     }
 }

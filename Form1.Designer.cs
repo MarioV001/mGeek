@@ -32,7 +32,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             mTxtBox = new System.Windows.Forms.RichTextBox();
-            this.ListContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.LogContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.searchToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
@@ -71,7 +71,8 @@
             this.BMWPanel = new System.Windows.Forms.Panel();
             this.MERCPanel = new System.Windows.Forms.Panel();
             this.LRPanel = new System.Windows.Forms.Panel();
-            this.ListContextMenu.SuspendLayout();
+            this.openCFGToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.LogContextMenu.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.contextLogsMenuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -83,7 +84,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             mTxtBox.BackColor = System.Drawing.Color.DarkSlateGray;
-            mTxtBox.ContextMenuStrip = this.ListContextMenu;
+            mTxtBox.ContextMenuStrip = this.LogContextMenu;
             mTxtBox.DetectUrls = false;
             mTxtBox.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             mTxtBox.ForeColor = System.Drawing.Color.WhiteSmoke;
@@ -96,20 +97,22 @@
             mTxtBox.TabIndex = 0;
             mTxtBox.Text = "0|";
             mTxtBox.WordWrap = false;
-            mTxtBox.KeyDown += mTxtBox_KeyDown;
-            mTxtBox.MouseDown += MTxtBox_MouseDown;
+            mTxtBox.MouseDown += this.MTxtBox_MouseDown;
+            mTxtBox.KeyDown += this.mTxtBox_KeyDown;
             // 
-            // ListContextMenu
+            // LogContextMenu
             // 
-            this.ListContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.searchToolStripMenuItem1});
-            this.ListContextMenu.Name = "ListContextMenu";
-            this.ListContextMenu.Size = new System.Drawing.Size(110, 26);
+            this.openCFGToolStripMenuItem.Click += new System.EventHandler(this.openCFGToolStripMenuItem_Click);
+            this.LogContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.searchToolStripMenuItem1,
+            this.openCFGToolStripMenuItem});
+            this.LogContextMenu.Name = "ListContextMenu";
+            this.LogContextMenu.Size = new System.Drawing.Size(181, 70);
             // 
             // searchToolStripMenuItem1
             // 
             this.searchToolStripMenuItem1.Name = "searchToolStripMenuItem1";
-            this.searchToolStripMenuItem1.Size = new System.Drawing.Size(109, 22);
+            this.searchToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.searchToolStripMenuItem1.Text = "Search";
             // 
             // openFileDialog1
@@ -511,6 +514,14 @@
             this.LRPanel.TabIndex = 28;
             this.LRPanel.Visible = false;
             // 
+            // openCFGToolStripMenuItem
+            // 
+            this.openCFGToolStripMenuItem.Name = "openCFGToolStripMenuItem";
+            this.openCFGToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.openCFGToolStripMenuItem.Text = "Open CFG";
+            this.openCFGToolStripMenuItem.Visible = false;
+            
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -539,7 +550,7 @@
             this.Name = "Form1";
             this.Text = "mGeek";
             this.Load += new System.EventHandler(this.Form1_Load);
-            this.ListContextMenu.ResumeLayout(false);
+            this.LogContextMenu.ResumeLayout(false);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.contextLogsMenuStrip1.ResumeLayout(false);
@@ -581,7 +592,7 @@
         private System.Windows.Forms.Panel MERCPanel;
         private System.Windows.Forms.Panel LRPanel;
         private System.Windows.Forms.ToolStripMenuItem searchToolStripMenuItem;
-        private System.Windows.Forms.ContextMenuStrip ListContextMenu;
+        private System.Windows.Forms.ContextMenuStrip LogContextMenu;
         private System.Windows.Forms.ToolStripMenuItem searchToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem refreshLogsListToolStripMenuItem;
         private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton3;
@@ -589,7 +600,8 @@
         private System.Windows.Forms.ToolStripMenuItem driveDataFilesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem datasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem dataDumpToolStripMenuItem;
-        public static System.Windows.Forms.RichTextBox mTxtBox;
+        private System.Windows.Forms.ToolStripMenuItem openCFGToolStripMenuItem;
+        static public System.Windows.Forms.RichTextBox mTxtBox;
     }
 }
 
